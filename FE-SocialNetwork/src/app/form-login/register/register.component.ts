@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     message: "no_email"
   }
   success: any = {
-    message: "yes"
+    message: "create_success"
   }
   constructor(private authService: AuthService,
               private router: Router) { }
