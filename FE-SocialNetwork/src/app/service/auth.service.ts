@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {SignUpForm} from '../model/SignUpForm';
 import {Observable} from 'rxjs';
 import {JwtResponse} from '../model/JwtResponse';
+import {PostForm} from '../model/PostForm';
 
 class SignInForm {
 }
@@ -15,10 +16,20 @@ export class AuthService {
 // Api local
   private API_SIGNUP = environment.API_LOCAL + 'signup';
   private API_SIGNIN = environment.API_LOCAL + 'signin';
+  private API_POST = environment.API_LOCAL + 'createPost';
+  private API_SHOWPOST = environment.API_LOCAL + 'showPost';
   private API_CHANGE_AVATAR = environment.API_LOCAL + 'change-avatar';
   data: boolean;
 
   constructor(private http: HttpClient) {
+  }
+
+  createPost( post: PostForm): Observable<any> {
+    return this.http.post<any>(this.API_POST, post);
+  }
+
+  showListPost(): Observable<any> {
+    return this.http.get<any>(this.API_SHOWPOST);
   }
 
   signup(signUp: SignUpForm): Observable<any> {
