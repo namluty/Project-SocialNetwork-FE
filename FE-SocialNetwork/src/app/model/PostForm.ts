@@ -1,9 +1,9 @@
 export class PostForm {
-  private content: string;
-  private status: string;
-  private imageUrl: string;
-  private created_date: any;
-  private modified_date: any;
+  public content: string;
+  public status: string;
+  public imageUrl: string;
+  public created_date: any;
+  public modified_date: any;
 
   constructor(content: string, status: string, imageUrl: string) {
     this.content = content;

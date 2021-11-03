@@ -20,6 +20,7 @@ export class UserAccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getListPost();
   }
 
   logOut() {
@@ -29,12 +30,20 @@ export class UserAccountComponent implements OnInit {
       window.location.reload();
     });
   };
-
+  listPost: PostForm[]=[];
+  getListPost(){
+    this.postService.showListPost().subscribe(data =>{
+      this.listPost = data;
+    })
+  }
+  addPost(){
+    this.getListPost();
+  }
   ngPost() {
     this.post = new PostForm(
       this.form.content,
       this.form.status,
-      this.form.avatarUrl
+      this.form.imageUrl
     );
     this.postService.createPost(this.post).subscribe(data => {
 

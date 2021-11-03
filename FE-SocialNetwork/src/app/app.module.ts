@@ -12,15 +12,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card';
 
-import {HomeComponent} from './pages/home/home.component';
-import {GettingStartedComponent} from './pages/gettingstarted/gettingstarted.component';
-
 import {HttpClientModule} from '@angular/common/http';
-import {NgxAudioPlayerModule} from 'projects/ngx-audio-player/src/public_api';
 import {MatButtonModule} from '@angular/material/button';
 
-import {NavBarModule} from './shared/navbar';
-import {FooterModule} from './shared/footer';
 import {RegisterComponent} from './form-login/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -35,6 +29,7 @@ import {registerLocaleData} from '@angular/common';
 import en from '@angular/common/locales/en';
 import {_MatMenuDirectivesModule, MatMenuModule} from '@angular/material/menu';
 import {httpInterceptorProviders} from './security/auth.interceptor';
+import { HomeComponent } from './home/home.component';
 
 registerLocaleData(en);
 
@@ -44,16 +39,10 @@ export const appRoutes: Routes = [
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
   {path: 'user-account', component: UserAccountComponent},
 
-
-  {
-    path: 'guide/getting-started',
-    component: GettingStartedComponent,
-    data: {title: 'Getting Started'}
-  }
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, GettingStartedComponent, RegisterComponent, LoginComponent, UserAccountComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent],
   imports: [
 
     MatNativeDateModule,
@@ -68,8 +57,6 @@ export const appRoutes: Routes = [
     MatSlideToggleModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    NavBarModule, FooterModule,
-    NgxAudioPlayerModule,
     RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, _MatMenuDirectivesModule, MatMenuModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],

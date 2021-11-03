@@ -17,6 +17,7 @@ export class AuthService {
   private API_SIGNUP = environment.API_LOCAL + 'signup';
   private API_SIGNIN = environment.API_LOCAL + 'signin';
   private API_POST = environment.API_LOCAL + 'createPost';
+  private API_SHOWPOST = environment.API_LOCAL + 'showPost';
   private API_CHANGE_AVATAR = environment.API_LOCAL + 'change-avatar';
   data: boolean;
 
@@ -25,6 +26,10 @@ export class AuthService {
 
   createPost( post: PostForm): Observable<any> {
     return this.http.post<any>(this.API_POST, post);
+  }
+
+  showListPost(): Observable<any> {
+    return this.http.get<any>(this.API_SHOWPOST);
   }
 
   signup(signUp: SignUpForm): Observable<any> {

@@ -1,17 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {SignUpForm} from '../../model/SignUpForm';
-import {AuthService} from '../../service/auth.service';
+import { Component, OnInit } from '@angular/core';
+import {SignInForm} from '../model/SignInForm';
 import {Router} from '@angular/router';
-import {SignInForm} from '../../model/SignInForm';
-import {TokenService} from '../../service/token.service';
+import {TokenService} from '../service/token.service';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   hide = true;
   form: any = {};
   signInForm: SignInForm;
