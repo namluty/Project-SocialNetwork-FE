@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Roles} from '../model/roles';
 
 const TOKEN_KEY = 'Token_Key';
 const FULLNAME_KEY = 'FullName_Key';
@@ -59,7 +60,7 @@ export class TokenService {
     return window.sessionStorage.getItem(AVATAR_KEY);
   }
 
-  public setRole(roles: string[]) {
+  public setRole(roles: Roles[]) {
     window.sessionStorage.removeItem(ROLE_KEY);
     window.sessionStorage.setItem(ROLE_KEY, JSON.stringify(roles));
   }

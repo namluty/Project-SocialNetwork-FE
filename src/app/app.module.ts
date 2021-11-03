@@ -45,7 +45,6 @@ export const appRoutes: Routes = [
 @NgModule({
   declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent],
   imports: [
-
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,

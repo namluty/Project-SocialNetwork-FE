@@ -171,7 +171,7 @@
                                     <option value="onlyme">Only Me</option>
                                 </select><br>
                                 <button (click)="addPost()" mat-stroked-button color="accent"
-                                        class="mat-button-toggle-group btn-outline-primary">Đăng Bài Viết
+                                        class="mat-button-toggle-group btn-outline-primary">Đăng Bài
                                     <mat-icon color="accent" matSuffix>mic</mat-icon>
                                 </button>
 <!--                                Test git-->
@@ -184,6 +184,7 @@
             </div>
 
             <div *ngFor="let post of listPost" class="w3-container w3-card w3-white w3-round w3-margin"><br>
+                <p>{{post.user.fullName}}</p>
                 <img src="{{post.imageUrl}}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
                      style="width:60px">
                 <span class="w3-right w3-opacity">1 min</span>

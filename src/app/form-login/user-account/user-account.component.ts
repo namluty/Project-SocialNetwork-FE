@@ -11,7 +11,7 @@ import {AuthService} from '../../service/auth.service';
   styleUrls: ['./user-account.component.scss']
 })
 export class UserAccountComponent implements OnInit {
-  form: any = {};
+  form: any = {status: 'public'};
   post: PostForm;
   fullName: any;
   phone: any;
@@ -34,7 +34,7 @@ export class UserAccountComponent implements OnInit {
     console.log('goi log out');
     window.sessionStorage.clear();
     this.router.navigate(['login']).then(() => {
-      window.location.reload();
+      // window.location.reload();
     });
   };
 
