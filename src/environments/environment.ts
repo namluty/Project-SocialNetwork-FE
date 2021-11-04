@@ -4,15 +4,6 @@
 
 export const environment = {
   production: false,
-  // firebaseConfig: {
-  //   apiKey: 'AIzaSyAm4Dr_WDoOpk4Dwlx_7V0zA0TwT0d8Kxc',
-  //   authDomain: 'learnfirebase-90c9f.firebaseapp.com',
-  //   projectId: 'learnfirebase-90c9f',
-  //   storageBucket: 'learnfirebase-90c9f.appspot.com',
-  //   messagingSenderId: '688931931094',
-  //   appId: '1:688931931094:web:5820df59ff368fd2355a77',
-  //   measurementId: 'G-BGEC9C4YRK'
-  // },
 };
 
 /*

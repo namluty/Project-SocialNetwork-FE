@@ -57,10 +57,14 @@ export class UserAccountComponent implements OnInit {
       this.form.imageUrl
     );
     this.postService.createPost(this.post).subscribe(data => {
-
+      console.log('data', data);
     });
     // onUploadAvatar($event: string){
     //   this.form.avatarUrl = $event;
     // }
+  }
+
+  uploadAvatar($event: string) {
+    this.form.imageUrl = $event;
   }
 }

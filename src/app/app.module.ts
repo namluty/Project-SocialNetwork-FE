@@ -31,6 +31,11 @@ import {_MatMenuDirectivesModule, MatMenuModule} from '@angular/material/menu';
 import {httpInterceptorProviders} from './security/auth.interceptor';
 import { HomeComponent } from './home/home.component';
 import { ChangeProfileComponent } from './change-profile/change-profile.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment.prod';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 registerLocaleData(en);
 
@@ -39,12 +44,15 @@ export const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
   {path: 'user-account', component: UserAccountComponent},
+  {path: 'upload-avatar', component: UploadFileComponent},
 
 ];
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent],
   imports: [
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
@@ -57,7 +65,7 @@ export const appRoutes: Routes = [
     MatSlideToggleModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, _MatMenuDirectivesModule, MatMenuModule
+    RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]
