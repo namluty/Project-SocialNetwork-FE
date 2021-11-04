@@ -1,4 +1,4 @@
-import {Roles} from './roles';
+import {Roles} from './Roles';
 
 export interface JwtResponse {
   token?: string;

@@ -22,7 +22,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {LoginComponent} from './form-login/login/login.component';
-import {UserAccountComponent} from './form-login/user-account/user-account.component';
+import {UserAccountComponent} from './user-account/user-account.component';
 import {NZ_I18N} from 'ng-zorro-antd/i18n';
 import {en_US} from 'ng-zorro-antd/i18n';
 import {registerLocaleData} from '@angular/common';
@@ -39,6 +39,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AdminManagerComponent } from './admin-manager/admin-manager.component';
 import { PageUserComponent } from './adminManage/page-user/page-user.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { SearchComponent } from './search/search.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
 
 registerLocaleData(en);
 
@@ -53,7 +55,7 @@ export const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent, AdminManagerComponent, PageUserComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -69,7 +71,8 @@ export const appRoutes: Routes = [
     MatSlideToggleModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule
+    RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule,
+    _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]

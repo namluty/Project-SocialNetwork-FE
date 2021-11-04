@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {TokenService} from '../../service/token.service';
+import {TokenService} from '../service/token.service';
 import {Router} from '@angular/router';
-import {PostForm} from '../../model/PostForm';
-import {AuthService} from '../../service/auth.service';
-import {FriendService} from '../../service/friend.service';
-import {User} from '../../model/user';
+import {PostForm} from '../model/PostForm';
+import {AuthService} from '../service/auth.service';
+import {FriendService} from '../service/friend.service';
+import {User} from '../model/User';
 
 
 @Component({
@@ -66,6 +66,7 @@ export class UserAccountComponent implements OnInit {
     );
     this.postService.createPost(this.post).subscribe(data => {
       console.log('data', data);
+      this.form.content ='';
     });
   }
 
@@ -79,7 +80,6 @@ export class UserAccountComponent implements OnInit {
 
   searchName(name: string) {
     this.friendService.searchByFullName(name).subscribe(data => {
-      console.log(data,'lisstttttttt');
       this.listUser = data;
     });
   }

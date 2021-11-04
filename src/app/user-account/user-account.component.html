@@ -25,22 +25,24 @@
         <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
                 class="fa fa-envelope"></i></a>
         <form class="d-flex">
-            <input #element style="width: 300px; margin-top: 4px" class="form-control me-2" type="search" placeholder="Search"
+            <input style="position: fixed; right: 15%";  #element style="width: 250px; margin-top: 8px" class="form-control me-2" type="search"
+                   placeholder="Search"
                    aria-label="Search">
-            <button (click)="searchName(element.value)" style="margin-top: 4px" class="btn btn-outline-success" type="submit">Search</button>
-
-            <a class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-                <button mat-button [matMenuTriggerFor]="menu">...</button>
-                <img src="{{avatar}}" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+            <button (click)="searchName(element.value)" style="margin-top: 8px; height: 36px"
+                    class="btn btn-outline-success" type="submit">Search
+            </button>
+            <a style="position: fixed; right: 2%;top:1%">
+                <img [matMenuTriggerFor]="menu" src="{{avatar}}" class="w3-circle" style="height:40px;width:40px"
+                     alt="Avatar">
                 <mat-menu #menu="matMenu">
-                    <button (click)="logOut()" mat-menu-item>Đăng xuất</button>
+                    <button style="height: 30px; width: 40px" (click)="logOut()" mat-button>Log Out</button>
                 </mat-menu>
             </a>
         </form>
     </div>
 </div>
 <br>
-<!--<app-search-friend></app-search-friend>-->
+
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
     <!-- The Grid -->
@@ -51,14 +53,12 @@
             <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
                     <img src="{{avatar}}" style="height:106px;width:106px" class="w3-center">
-
                     <hr>
                     <p> {{fullName}}</p>
                     <p> {{phone}}</p>
                     <p> {{email}}</p>
                 </div>
 
-                <app-upload-file (giveURLtoCreate)="onChangeAvatar1($event)"></app-upload-file>
             </div>
             <br>
 
@@ -106,7 +106,6 @@
                 </div>
             </div>
             <br>
-
             <!-- Interests -->
             <div class="w3-card w3-round w3-white w3-hide-small">
                 <div class="w3-container">
@@ -133,13 +132,14 @@
         <span class="w3-button w3-theme-l3 w3-display-topright">
           <i class="fa fa-remove"></i>
         </span>
-                <p><strong>Hey!</strong></p>
-                <p>People are looking at your profile. Find out who.</p>
+                <app-search></app-search>
+                <p><strong>Hey you!</strong></p>
+                <p>People are looking at your profile. Let's be friend.</p>
+                <p>Mọi người đang xem hồ sơ của bạn. Hãy kết bạn với tôi.</p>
             </div>
 
             <!-- End Left Column -->
         </div>
-
 
         <!-- Middle Column -->
         <div class="w3-col m7">
@@ -160,15 +160,19 @@
                                 <!-- CONTENT -->
                                 <mat-form-field style="width: 80%" appearance="outline">
                                     <input name="content" [(ngModel)]="form.content" matInput
-                                           placeholder="Bạn đang nghĩ gì?" #content="ngModel">
+                                           placeholder="Bạn đang nghĩ gì?" #content="ngModel"><br>
+                                    <app-upload-file style="width: 110px; color: #ffffff; text-align: center"
+                                                     class="form-control"
+                                                     (giveURLtoCreate)="uploadAvatar($event)">
+                                    </app-upload-file>
                                 </mat-form-field>
                                 <select name="status" [(ngModel)]="form.status">
-                                    <option value="public">Public</option>
-                                    <option value="friend">Friend</option>
-                                    <option value="onlyme">Only Me</option>
-                                </select><br>
-                                <app-upload-file (giveURLtoCreate)="uploadAvatar($event)"></app-upload-file>
-                                <button (click)="addPost()" mat-stroked-button color="accent"
+                                    <option class="form-control" value="public">Public</option>
+                                    <option class="form-control" value="friend">Friend</option>
+                                    <option class="form-control" value="onlyme">Only Me</option>
+                                </select>
+
+                                <button style="width: 110px" (click)="addPost()" mat-stroked-button color="accent"
                                         class="mat-button-toggle-group btn-outline-primary">Đăng Bài
                                 </button>
                             </form>

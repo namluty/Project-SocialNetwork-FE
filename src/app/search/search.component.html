@@ -2,21 +2,18 @@
     <div class="row">
         <div class="col-12" style="margin-top: 20px">
             <mat-card style="margin: 50px 0">
-                <mat-card-title align="center" class="alert alert-primary">ADMIN MANAGE</mat-card-title>
+                <mat-card-title align="center" class="alert alert-primary">LIST USER</mat-card-title>
                 <div class="row">
                     <div class="column" *ngFor="let user of users">
-                        <button (click)="blockUser(user.id)" mat-icon-button color="primary">
-                            <mat-icon>block</mat-icon>Block/Unblock
-                        </button>
                         <div class="card">
-                            <i style="font-size: 1.5vw; color: crimson">{{user.id}}</i>
                             <i style="font-size: 1.5vw; color: crimson">{{user.fullName}}</i>
-                            <i style="font-size: 1.5vw; color: crimson">{{user.isActive}}</i>
+                            <i style="font-size: 1.5vw; color: crimson">{{user.email}}</i>
                             <img style="width: 120px; height: 120px" class="img" [src]="user.avatarUrl">
+                            <button (click)="setFriend(user.id)">Add Friend</button>
                         </div>
                     </div>
                 </div>
-                <mat-paginator [pageSizeOptions]="[3,15,30,90]" [length]="totalElements"
+                <mat-paginator [pageSizeOptions]="[5,15,30,90]" [length]="totalElements"
                                (page)="nextPage($event)"></mat-paginator>
             </mat-card>
         </div>
