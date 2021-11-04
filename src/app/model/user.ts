@@ -1,4 +1,6 @@
 export interface User {
-  // id: number;
+  id: number;
   fullName: string;
+  avatarUrl: string;
+  isActive: any
 }

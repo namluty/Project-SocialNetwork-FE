@@ -38,15 +38,16 @@ export class LoginComponent implements OnInit {
     this.authService.signin(this.signInForm).subscribe(data => {
       console.log(data);
       if (data.message == 'user_was_blocked') {
-        console.log('Block Account'); // cái này cần đổi để hiển thị cho client
+        alert("Account is Blocked!!!")
       } else {
         if (data.token != undefined) {
           this.tokenService.setToken(data.token);
           this.tokenService.setFullName(data.fullName);
           this.tokenService.setRole(data.roles);
-          this.tokenService.setAvatar(data.avatar);
+          this.tokenService.setAvatarUrl(data.avatarUrl);
           this.tokenService.setPhone(data.phone);
           this.tokenService.setEmail(data.email);
+          this.tokenService.setIsActive(data.isActive);
           this.router.navigate(['user-account']).then(() => {
           });
         }

@@ -7,6 +7,7 @@ import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/sto
   styleUrls: ['./upload-file.component.scss']
 })
 export class UploadFileComponent implements OnInit {
+
   selectedFile: File;
   ref: AngularFireStorageReference;
   downloadURL: string;
@@ -16,11 +17,13 @@ export class UploadFileComponent implements OnInit {
   constructor(private afStorage: AngularFireStorage) {
   }
   ngOnInit(): void {
+    this.downloadURL = '';
   }
   //Khi upload file qua thẻ input dưới dạng 1 hoặc nhiều file thì tệp đó thông qua sự kiện (change) $event được kích hoạt. Và tất cả file upload sẽ lưu trữ
   // trong $event.target.files.
   onFileChanged($event){
     this.selectedFile  = $event.target.files[0];
+    this.onUpload()
   }
   onUpload(){
     this.checkUploadAvatar = true;
@@ -38,5 +41,4 @@ export class UploadFileComponent implements OnInit {
         console.log(`Failed to upload avatar and get link ${error}`);
       })
   }
-
 }

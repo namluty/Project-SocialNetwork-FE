@@ -3,6 +3,8 @@ import {TokenService} from '../../service/token.service';
 import {Router} from '@angular/router';
 import {PostForm} from '../../model/PostForm';
 import {AuthService} from '../../service/auth.service';
+import {FriendService} from '../../service/friend.service';
+import {User} from '../../model/user';
 
 
 @Component({
@@ -16,25 +18,31 @@ export class UserAccountComponent implements OnInit {
   fullName: any;
   phone: any;
   email: any;
+  avatar: any;
+  isCheckAdmin = false;
+  admin: any = ['ADMIN'];
+  listUser: User[] = [];
 
   constructor(private tokenService: TokenService,
               private router: Router,
-              private postService: AuthService) {
+              private postService: AuthService,
+              private friendService: FriendService) {
   }
 
   ngOnInit(): void {
     this.getListPost();
-   this.fullName = this.tokenService.getFullName();
-    console.log(this.fullName, 'sdugsdasdhsaukdgask');
+    this.fullName = this.tokenService.getFullName();
     this.phone = this.tokenService.getPhone();
-   this.email = this.tokenService.getEmail();
+    this.email = this.tokenService.getEmail();
+    this.avatar = this.tokenService.getAvatarUrl();
+    if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(this.admin)) {
+      this.isCheckAdmin = true;
+    }
   }
 
   logOut() {
-    console.log('goi log out');
     window.sessionStorage.clear();
     this.router.navigate(['login']).then(() => {
-      // window.location.reload();
     });
   };
 
@@ -59,12 +67,20 @@ export class UserAccountComponent implements OnInit {
     this.postService.createPost(this.post).subscribe(data => {
       console.log('data', data);
     });
-    // onUploadAvatar($event: string){
-    //   this.form.avatarUrl = $event;
-    // }
   }
 
   uploadAvatar($event: string) {
     this.form.imageUrl = $event;
+  }
+
+  onChangeAvatar1($event: string) {
+    this.avatar = $event;
+  }
+
+  searchName(name: string) {
+    this.friendService.searchByFullName(name).subscribe(data => {
+      console.log(data,'lisstttttttt');
+      this.listUser = data;
+    });
   }
 }

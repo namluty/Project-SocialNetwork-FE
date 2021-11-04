@@ -7,6 +7,7 @@ const ROLE_KEY = 'Role_Key';
 const AVATAR_KEY = 'Avatar_Key';
 const PHONE_KEY = 'Phone_Key';
 const EMAIL_KEY = 'Email_Key';
+const ACTIVE_KEY = 'Active_Key';
 
 
 @Injectable({
@@ -16,6 +17,15 @@ export class TokenService {
   private roles: Array<string> = [];
 
   constructor() {
+  }
+
+
+  public setIsActive(isActive: string){
+    window.sessionStorage.removeItem(ACTIVE_KEY);
+    window.sessionStorage.setItem(ACTIVE_KEY, String(isActive));
+  }
+  public getIsActive(): string{
+    return window.sessionStorage.getItem(ACTIVE_KEY);
   }
   public setPhone(phone: string){
     window.sessionStorage.removeItem(PHONE_KEY);
@@ -51,12 +61,12 @@ export class TokenService {
     return window.sessionStorage.getItem(FULLNAME_KEY);
   }
 
-  public setAvatar(avatar: string) {
+  public setAvatarUrl(avatar: string) {
     window.sessionStorage.removeItem(AVATAR_KEY);
     window.sessionStorage.setItem(AVATAR_KEY, avatar);
   }
 
-  public getAvatar(): string {
+  public getAvatarUrl(): string {
     return window.sessionStorage.getItem(AVATAR_KEY);
   }
 

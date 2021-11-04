@@ -36,6 +36,9 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment.prod';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AdminManagerComponent } from './admin-manager/admin-manager.component';
+import { PageUserComponent } from './adminManage/page-user/page-user.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 registerLocaleData(en);
 
@@ -45,11 +48,12 @@ export const appRoutes: Routes = [
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
   {path: 'user-account', component: UserAccountComponent},
   {path: 'upload-avatar', component: UploadFileComponent},
+  {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}}
 
 ];
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent, AdminManagerComponent, PageUserComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -65,7 +69,7 @@ export const appRoutes: Routes = [
     MatSlideToggleModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule
+    RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule, _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]

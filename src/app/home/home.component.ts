@@ -35,9 +35,9 @@ export class HomeComponent implements OnInit {
         this.tokenService.setToken(data.token);
         this.tokenService.setFullName(data.fullName);
         this.tokenService.setRole(data.roles);
-        this.tokenService.setAvatar(data.avatar);
+        this.tokenService.setAvatarUrl(data.avatarUrl);
         this.router.navigate(['user-account']).then(() => {
-          window.location.reload();
+          // window.location.reload();
         });
       }
     });
