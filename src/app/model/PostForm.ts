@@ -1,7 +1,8 @@
 import {User} from './User';
 
 export class PostForm {
-  public content: string;
+  public id ?: number;
+   content: string;
   public status: string;
   public imageUrl: string;
   public created_date: any;

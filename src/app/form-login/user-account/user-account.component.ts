@@ -5,6 +5,8 @@ import {PostForm} from '../../model/PostForm';
 import {AuthService} from '../../service/auth.service';
 import {FriendService} from '../../service/friend.service';
 import {User} from '../../model/User';
+import {Comments} from '../../model/comment';
+import {CommentService} from '../../service/comment.service';
 
 
 @Component({
@@ -13,6 +15,8 @@ import {User} from '../../model/User';
   styleUrls: ['./user-account.component.scss']
 })
 export class UserAccountComponent implements OnInit {
+  formComment: any;
+  comment: Comments;
   form: any = {status: 'public'};
   post: PostForm;
   fullName: any;
@@ -26,7 +30,8 @@ export class UserAccountComponent implements OnInit {
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
-              private friendService: FriendService) {
+              private friendService: FriendService,
+              private commentService: CommentService) {
   }
 
   ngOnInit(): void {
@@ -51,6 +56,13 @@ export class UserAccountComponent implements OnInit {
   getListPost() {
     this.postService.showListPost().subscribe(data => {
       this.listPost = data;
+    });
+  }
+
+  ngComment(id:number) {
+    this.commentService.createComment(id).subscribe(data => {
+      console.log('data', data);
+      this.formComment.content = '';
     });
   }
 
