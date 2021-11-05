@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Roles} from '../model/roles';
+import {Roles} from '../model/Roles';
 
 const TOKEN_KEY = 'Token_Key';
 const FULLNAME_KEY = 'FullName_Key';

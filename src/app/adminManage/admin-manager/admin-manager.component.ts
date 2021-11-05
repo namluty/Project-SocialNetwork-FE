@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminService} from '../service/admin.service';
-import {User} from '../model/user';
+import {AdminService} from '../../service/admin.service';
+import {User} from '../../model/User';
 import {PageEvent} from '@angular/material/paginator';
 
 @Component({
@@ -16,17 +16,14 @@ export class AdminManagerComponent implements OnInit {
   constructor(private adminService : AdminService) { }
 
   ngOnInit(): void {
-    this.getListRequest({page:0, size:3})
+    this.getListRequest({page:0, size:1000})
   }
 
   private getListRequest(request) {
     this.loading = true;
     this.adminService.pageUser(request).subscribe(data => {
-      console.log('data --> ', data);
       this.users = data['content'];
-      console.log('data[content] ---->', data['content']);
       this.totalElements = data['totalElements'];
-      console.log('data[totalElements] == ', data['totalElements']);
       this.loading = false;
     }, error => {
       this.loading = false;
@@ -34,21 +31,16 @@ export class AdminManagerComponent implements OnInit {
   }
 
   nextPage(event: PageEvent) {
-    console.log('event -->', event);
     const request = {};
     request['page'] = event.pageIndex.toString();
     request['size'] = event.pageSize.toString();
-    console.log('request[size]', request['size']);
     this.getListRequest(request);
   }
 
   blockUser(id: number){
-    console.log('id == ', id);
-    this.adminService.changeRoleUser(id).subscribe(date =>{
-      console.log('data => ',date)
-
+    this.adminService.changeRoleUser(id).subscribe(data =>{
     })
-    this.getListRequest({page:0, size:3})
+    this.getListRequest({page:0, size:1000});
   }
 
   // deleteUser(id: number) {

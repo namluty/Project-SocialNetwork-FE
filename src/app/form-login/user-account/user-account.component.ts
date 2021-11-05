@@ -4,8 +4,7 @@ import {Router} from '@angular/router';
 import {PostForm} from '../../model/PostForm';
 import {AuthService} from '../../service/auth.service';
 import {FriendService} from '../../service/friend.service';
-import {User} from '../../model/user';
-import {CommentService} from "../../service/comment.service";
+import {User} from '../../model/User';
 
 
 @Component({
@@ -16,7 +15,6 @@ import {CommentService} from "../../service/comment.service";
 export class UserAccountComponent implements OnInit {
   form: any = {status: 'public'};
   post: PostForm;
-  comment : Comment;
   fullName: any;
   phone: any;
   email: any;
@@ -28,8 +26,7 @@ export class UserAccountComponent implements OnInit {
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
-              private friendService: FriendService,
-              private commentService: CommentService) {
+              private friendService: FriendService) {
   }
 
   ngOnInit(): void {
@@ -69,25 +66,9 @@ export class UserAccountComponent implements OnInit {
     );
     this.postService.createPost(this.post).subscribe(data => {
       console.log('data', data);
-      this.form.content ="";
-      this.form.status="public";
-      this.form.imageUrl=""
-      this.getListPost();
+      this.form.content = '';
     });
   }
-
-  // ngComment() {
-  //   this.comment = new Comment(
-  //
-  //   );
-  //   this.commentService.createComment(this.comment).subscribe(data => {
-  //     console.log('data', data);
-  //     this.form.content ="";
-  //     this.form.status="public";
-  //     this.form.imageUrl=""
-  //     this.getListPost();
-  //   });
-  // }
 
   uploadAvatar($event: string) {
     this.form.imageUrl = $event;
@@ -99,7 +80,6 @@ export class UserAccountComponent implements OnInit {
 
   searchName(name: string) {
     this.friendService.searchByFullName(name).subscribe(data => {
-      console.log(data,'lisstttttttt');
       this.listUser = data;
     });
   }
