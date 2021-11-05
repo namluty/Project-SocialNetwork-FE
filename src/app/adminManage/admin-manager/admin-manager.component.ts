@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminService} from '../service/admin.service';
-import {User} from '../model/User';
+import {AdminService} from '../../service/admin.service';
+import {User} from '../../model/User';
 import {PageEvent} from '@angular/material/paginator';
 
 @Component({

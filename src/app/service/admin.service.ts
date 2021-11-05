@@ -19,10 +19,5 @@ export class AdminService {
     // @ts-ignore
     return this.http.put<any>(`${this.API_CHANGE_ROLE}/${id}`);
   }
-  // getUserById(id: number): Observable<UserAccount>{
-  //   return this.http.get<UserAccount>(`${this.API_PAGE_USER}/${id}`);
-  // }
-  // deleteUserById(id: number): Observable<UserAccount>{
-  //   return this.http.delete<UserAccount>(`${this.API_PAGE_USER}/${id}`);
-  // }
+
 }

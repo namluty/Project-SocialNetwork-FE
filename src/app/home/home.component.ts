@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
       this.form.password
     )
     this.authService.signin(this.signInForm).subscribe(data => {
-      // tslint:disable-next-line:triple-equals
+      // console.log('goi ham khong?');
+      // console.log(data,'adgadsakd');
       if (data.token != undefined) {
         this.tokenService.setToken(data.token);
         this.tokenService.setFullName(data.fullName);

@@ -21,8 +21,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
-import {LoginComponent} from './form-login/login/login.component';
-import {UserAccountComponent} from './user-account/user-account.component';
+
+
+import {UserAccountComponent} from './form-login/user-account/user-account.component';
 import {NZ_I18N} from 'ng-zorro-antd/i18n';
 import {en_US} from 'ng-zorro-antd/i18n';
 import {registerLocaleData} from '@angular/common';
@@ -36,11 +37,12 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment.prod';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { AdminManagerComponent } from './admin-manager/admin-manager.component';
+import { AdminManagerComponent } from './adminManage/admin-manager/admin-manager.component';
 import { PageUserComponent } from './adminManage/page-user/page-user.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SearchComponent } from './search/search.component';
 import { AddFriendComponent } from './add-friend/add-friend.component';
+import {LoginComponent} from './form-login/login/login.component';
 
 registerLocaleData(en);
 
@@ -55,7 +57,8 @@ export const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent],
+  declarations: [AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
+    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
