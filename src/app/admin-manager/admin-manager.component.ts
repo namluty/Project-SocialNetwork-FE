@@ -46,6 +46,7 @@ export class AdminManagerComponent implements OnInit {
     console.log('id == ', id);
     this.adminService.changeRoleUser(id).subscribe(date =>{
       console.log('data => ',date)
+
     })
   }
 

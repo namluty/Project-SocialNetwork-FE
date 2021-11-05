@@ -39,6 +39,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AdminManagerComponent } from './admin-manager/admin-manager.component';
 import { PageUserComponent } from './adminManage/page-user/page-user.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { CommentComponent } from './comment/comment.component';
 
 registerLocaleData(en);
 
@@ -53,7 +54,7 @@ export const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent, AdminManagerComponent, PageUserComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, UserAccountComponent, HomeComponent, ChangeProfileComponent, UploadFileComponent, AdminManagerComponent, PageUserComponent, CommentComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

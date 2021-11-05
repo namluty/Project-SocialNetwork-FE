@@ -5,6 +5,7 @@ import {PostForm} from '../../model/PostForm';
 import {AuthService} from '../../service/auth.service';
 import {FriendService} from '../../service/friend.service';
 import {User} from '../../model/user';
+import {CommentService} from "../../service/comment.service";
 
 
 @Component({
@@ -15,6 +16,7 @@ import {User} from '../../model/user';
 export class UserAccountComponent implements OnInit {
   form: any = {status: 'public'};
   post: PostForm;
+  comment : Comment;
   fullName: any;
   phone: any;
   email: any;
@@ -26,7 +28,8 @@ export class UserAccountComponent implements OnInit {
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
-              private friendService: FriendService) {
+              private friendService: FriendService,
+              private commentService: CommentService) {
   }
 
   ngOnInit(): void {
@@ -66,8 +69,25 @@ export class UserAccountComponent implements OnInit {
     );
     this.postService.createPost(this.post).subscribe(data => {
       console.log('data', data);
+      this.form.content ="";
+      this.form.status="public";
+      this.form.imageUrl=""
+      this.getListPost();
     });
   }
+
+  // ngComment() {
+  //   this.comment = new Comment(
+  //
+  //   );
+  //   this.commentService.createComment(this.comment).subscribe(data => {
+  //     console.log('data', data);
+  //     this.form.content ="";
+  //     this.form.status="public";
+  //     this.form.imageUrl=""
+  //     this.getListPost();
+  //   });
+  // }
 
   uploadAvatar($event: string) {
     this.form.imageUrl = $event;
