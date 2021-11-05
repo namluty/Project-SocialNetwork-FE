@@ -48,6 +48,7 @@ export class AdminManagerComponent implements OnInit {
       console.log('data => ',date)
 
     })
+    this.getListRequest({page:0, size:3})
   }
 
   // deleteUser(id: number) {

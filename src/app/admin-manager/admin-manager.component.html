@@ -13,10 +13,11 @@
                             <mat-icon>edit</mat-icon>
                         </button>
                         <div class="card">
+                            <img src="{{user.avatarUrl}}" class="w3-circle" style="height:60px;width:60px" alt="Avatar">
                             <i style="font-size: 1.5vw; color: crimson">{{user.fullName}}</i>
-                            <i style="font-size: 1.5vw; color: crimson">{{user.isActive}}</i>
+                            <i style="font-size: 1.5vw; color: crimson"> trạng thái: {{user.isActive}}</i>
 <!--                            <i style="font-size: 1.5vw; color: crimson">{{user.}}</i>-->
-                            <img class="img" [src]="user.avatarUrl">
+<!--                            <img class="img" [src]="user.avatarUrl">-->
 <!--                            <div *ngFor="let role of user.r">-->
 <!--                                <i>{{role.name}}</i>-->
 <!--                            </div>-->
