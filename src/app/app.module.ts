@@ -43,6 +43,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { SearchComponent } from './search/search.component';
 import { AddFriendComponent } from './add-friend/add-friend.component';
 import {LoginComponent} from './form-login/login/login.component';
+import {CommentComponent} from './comment/comment.component';
 
 registerLocaleData(en);
 
@@ -57,7 +58,7 @@ export const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
+  declarations: [CommentComponent, AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
     UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent],
   imports: [
     AngularFireStorageModule,

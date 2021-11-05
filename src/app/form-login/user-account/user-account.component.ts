@@ -7,6 +7,7 @@ import {FriendService} from '../../service/friend.service';
 import {User} from '../../model/User';
 import {Comments} from '../../model/comment';
 import {CommentService} from '../../service/comment.service';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 
 
 @Component({
@@ -15,7 +16,7 @@ import {CommentService} from '../../service/comment.service';
   styleUrls: ['./user-account.component.scss']
 })
 export class UserAccountComponent implements OnInit {
-  formComment: any;
+  formComment: any ={}
   comment: Comments;
   form: any = {status: 'public'};
   post: PostForm;
@@ -27,11 +28,11 @@ export class UserAccountComponent implements OnInit {
   admin: any = ['ADMIN'];
   listUser: User[] = [];
 
+
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
-              private friendService: FriendService,
-              private commentService: CommentService) {
+              private friendService: FriendService) {
   }
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class UserAccountComponent implements OnInit {
     this.email = this.tokenService.getEmail();
     this.avatar = this.tokenService.getAvatarUrl();
     if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(this.admin)) {
-      this.isCheckAdmin = true;
+    this.isCheckAdmin = true;
     }
   }
 
@@ -59,16 +60,11 @@ export class UserAccountComponent implements OnInit {
     });
   }
 
-  ngComment(id:number) {
-    this.commentService.createComment(id).subscribe(data => {
-      console.log('data', data);
-      this.formComment.content = '';
-    });
-  }
 
-  addPost() {
-    this.getListPost();
-  }
+
+  // addPost() {
+  //   this.getListPost();
+  // }
 
   ngPost() {
     this.post = new PostForm(

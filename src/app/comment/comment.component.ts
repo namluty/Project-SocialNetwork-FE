@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Comments } from '../model/comment';
 import { CommentService } from '../service/comment.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {PostForm} from '../model/PostForm';
 
 @Component({
   selector: 'app-comment',
@@ -9,25 +11,34 @@ import { CommentService } from '../service/comment.service';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
-  // form : any
-  // commnet: Comments
-
-  constructor(private commentService : CommentService,
-              private router: Router) { }
+  commentForm: FormGroup;
+  comments : Comments[] =[];
+  @Input() post: PostForm;
+  constructor(private fb: FormBuilder,
+              private commentService : CommentService) { }
 
   ngOnInit(): void {
+    this.commentForm = this.fb.group({
+      content:[null, [Validators.required, Validators.min(3), Validators.max(1000)]]
+    })
+  }
+
+  ngComment() {
+    this.commentService.createComment(this.post.id, this.commentForm.value).subscribe(data => {
+      console.log('data', data);
+      this.commentForm.reset();
+      this.post.commentList.push(data);
+    },error => {console.log(error)});
   }
 
 
-  // ngComment(id:number) {
-  //   // @ts-ignore
-  //   this.commnet = new Comments(
-  //       this.form.content
-  //   );
-  //   this.commentService.createComment(id).subscribe(data => {
-  //     console.log('data', data);
-  //     this.form.content = '';
-  //   });
-  // }
+  editComment(comments: Comments) {
+    comments.check =true;
+  }
 
+  submitComment(comments: Comments) {
+    this.commentService.editComment(comments.id, comments).subscribe(data => {
+      comments.check = false;
+    },error => {console.log(error)});
+  }
 }

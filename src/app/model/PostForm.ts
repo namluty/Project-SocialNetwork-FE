@@ -1,14 +1,15 @@
 import {User} from './User';
+import {Comments} from './comment';
 
 export class PostForm {
   public id ?: number;
-   content: string;
+  public content: string;
   public status: string;
   public imageUrl: string;
   public created_date: any;
   public modified_date: any;
   public user: User;
-  public comments : Comment[];
+  public commentList : Comments[];
 
   constructor(content: string, status: string, imageUrl: string) {
     this.content = content;

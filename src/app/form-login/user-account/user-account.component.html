@@ -202,18 +202,7 @@
                 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>
                     Comment
                 </button>
-                <div class="w3-container w3-padding">
-                    <form class="" #c="ngForm" (ngSubmit)="c.form.valid && ngComment(post.id)" novalidate>
-                        <!-- CONTENT -->
-                        <mat-form-field style="width: 80%" appearance="outline">
-                            <input name="content" [(ngModel)]="formComment.content" matInput
-                                   placeholder="Nhập bình luận"><br>
-                        </mat-form-field>
-                        <button  mat-stroked-button color="accent"
-                                class="mat-button-toggle-group btn-outline-primary">Bình luận
-                        </button>
-                    </form>
-                </div>
+                <app-comment [post]="post"></app-comment>
             </div>
 
 

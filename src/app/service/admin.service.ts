@@ -15,7 +15,6 @@ export class AdminService {
     return this.http.get(this.API_PAGE_USER, {params})
   }
   changeRoleUser(id: number): Observable<any>{
-
     // @ts-ignore
     return this.http.put<any>(`${this.API_CHANGE_ROLE}/${id}`);
   }
