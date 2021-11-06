@@ -7,18 +7,18 @@
                     <!-- NAME -->
                     <mat-form-field style="width: 350px" appearance="outline">
                         <mat-label>Name:</mat-label>
-                        <input name="name" [(ngModel)]="form.name" #name="ngModel" required minlength="3" maxlength="50" matInput placeholder="Name ...">
+                        <input name="name" [(ngModel)]="form.fullName" #name="ngModel" required minlength="3" maxlength="50" matInput placeholder="FullName ...">
                         <mat-icon color="accent" matSuffix>favorite</mat-icon>
                         <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
                         <mat-error *ngIf="name.hasError('minlength')">The name must more than 2 character</mat-error>
                     </mat-form-field><br>
                     <!-- USERNAME -->
                     <mat-form-field style="width: 350px" appearance="outline">
-                        <mat-label>Username:</mat-label>
-                        <input name="username" [(ngModel)]="form.username" #username="ngModel" required minlength="3" maxlength="50" matInput placeholder="Username ...">
+                        <mat-label>Phone:</mat-label>
+                        <input name="phone" [(ngModel)]="form.phone" #phone="ngModel" required minlength="3" maxlength="50" matInput placeholder="Phone ...">
                         <mat-icon color="accent" matSuffix>3p</mat-icon>
-                        <mat-error *ngIf="username.hasError('required')">The name is required!</mat-error>
-                        <mat-error *ngIf="username.hasError('minlength')">The name must more than 2 character</mat-error>
+                        <mat-error *ngIf="phone.hasError('required')">The name is required!</mat-error>
+                        <mat-error *ngIf="phone.hasError('minlength')">The name must more than 2 character</mat-error>
                     </mat-form-field><br>
                     <!-- EMAIL -->
                     <mat-form-field style="width: 350px" appearance="outline">

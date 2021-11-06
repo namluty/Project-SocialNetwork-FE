@@ -36,6 +36,12 @@ export class CommentComponent implements OnInit {
     comments.check =true;
   }
 
+  deleteComment(comments: Comments){
+    this.commentService.deleteComment(comments.id).subscribe(data =>{
+      console.log(data, 'deleteComment')
+    },error => {console.log(error)});
+  }
+
   submitComment(comments: Comments) {
     this.commentService.editComment(comments.id, comments).subscribe(data => {
       comments.check = false;

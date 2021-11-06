@@ -44,6 +44,10 @@ import { SearchComponent } from './search/search.component';
 import { AddFriendComponent } from './add-friend/add-friend.component';
 import {LoginComponent} from './form-login/login/login.component';
 import {CommentComponent} from './comment/comment.component';
+import { LikeComponent } from './like/like.component';
+import { ChangeAvatarComponent } from './change-avatar/change-avatar.component';
+import {UploadAvatarComponent} from './upload-avatar/upload-avatar.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 registerLocaleData(en);
 
@@ -53,13 +57,15 @@ export const appRoutes: Routes = [
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
   {path: 'user-account', component: UserAccountComponent},
   {path: 'upload-avatar', component: UploadFileComponent},
-  {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}}
-
+  {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}},
+  {path: 'change-profile', component: ChangeProfileComponent},
+  {path: 'change-avatar', component: ChangeAvatarComponent},
+  {path: 'change-password', component:ChangePasswordComponent}
 ];
 
 @NgModule({
   declarations: [CommentComponent, AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
-    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent],
+    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
