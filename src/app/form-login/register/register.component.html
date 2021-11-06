@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="form-register" #f="ngForm" (ngSubmit)="f.form.valid && register()" novalidate>
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <!-- NAME -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>FullName:</mat-label>
+                        <input name="name" [(ngModel)]="form.fullName" matInput placeholder="Fullname..."
+                               #name="ngModel" minlength="3" maxlength="100" required>
+                        <mat-icon color="accent" matSuffix>person_outline</mat-icon>
+                        <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
+                        <mat-error *ngIf="name.hasError('minlength')">The name must more than 3 character</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <!-- USERNAME -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Username:</mat-label>
+                        <input name="username" [(ngModel)]="form.username" matInput placeholder="Username..."
+                               #username="ngModel" minlength="3" maxlength="100" required>
+                        <mat-icon color="accent" matSuffix>how_to_reg</mat-icon>
+                        <mat-error *ngIf="username.hasError('required')">The name is required!</mat-error>
+                        <mat-error *ngIf="username.hasError('minlength')">The name must more than 3 character
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <!-- EMAIL -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Email:</mat-label>
+                        <input name="email" [(ngModel)]="form.email" matInput placeholder="Email..."
+                               [formControl]="emailFormControl" required>
+                        <mat-icon color="accent" matSuffix>mark_email_read</mat-icon>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">The name is required!</mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('email')">The email is invalid! Ex:
+                            botherofsnake@gmail.com
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <!-- PHONE -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Phone:</mat-label>
+                        <input name="phone" [(ngModel)]="form.phone" matInput placeholder="Phone Number..."
+                               #phone="ngModel" minlength="10" maxlength="11" required>
+                        <mat-icon color="accent" matSuffix>point_of_sale</mat-icon>
+                        <mat-error *ngIf="phone.hasError('required')">The phone is required!</mat-error>
+                        <mat-error *ngIf="phone.hasError('minlength')">The phone must more than 10 character</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <!--PASSWORD -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Enter your password</mat-label>
+                        <input name="password" [(ngModel)]="form.password" matInput [type]="hide ? 'password' : 'text'"
+                               #password="ngModel" required minlength="6" maxlength="100">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                            <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
+                        <mat-error *ngIf="password.hasError('minlength')">The password must more than 6 character
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <!--RE-PASSWORD -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Enter your re-password</mat-label>
+                        <input *ngIf="!check_password" name="re_password" [(ngModel)]="form.re_password" matInput
+                               [type]="hide ? 'password' : 'text'" #re_password="ngModel" required minlength="6"
+                               maxlength="100">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                            <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
+                        <mat-error *ngIf="password.hasError('minlength')">The password must more than 6 character
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <!--                    Date Of Birth-->
+                    <mat-form-field style="width: 350px" color="accent" appearance="outline">
+                        <mat-label>Date Of Birth:</mat-label>
+                        <input matInput name="dateOfBirth" [matDatepicker]="date" [(ngModel)]="form.dateOfBirth"
+                               required>
+                        <mat-datepicker-toggle style="color: #f92672" matSuffix [for]="date"></mat-datepicker-toggle>
+                        <mat-datepicker #date></mat-datepicker>
+                    </mat-form-field>
+                    <br>
+                    <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">
+                        Register
+                        <mat-icon color="accent" matSuffix>done_all</mat-icon>
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

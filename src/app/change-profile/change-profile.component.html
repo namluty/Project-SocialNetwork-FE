@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="change-profile" #f="ngForm" (ngSubmit)="f.form.valid &&ngSubmit()" novalidate>
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <!-- NAME -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Name:</mat-label>
+                        <input name="name" [(ngModel)]="form.name" #name="ngModel" required minlength="3" maxlength="50" matInput placeholder="Name ...">
+                        <mat-icon color="accent" matSuffix>favorite</mat-icon>
+                        <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
+                        <mat-error *ngIf="name.hasError('minlength')">The name must more than 2 character</mat-error>
+                    </mat-form-field><br>
+                    <!-- USERNAME -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Username:</mat-label>
+                        <input name="username" [(ngModel)]="form.username" #username="ngModel" required minlength="3" maxlength="50" matInput placeholder="Username ...">
+                        <mat-icon color="accent" matSuffix>3p</mat-icon>
+                        <mat-error *ngIf="username.hasError('required')">The name is required!</mat-error>
+                        <mat-error *ngIf="username.hasError('minlength')">The name must more than 2 character</mat-error>
+                    </mat-form-field><br>
+                    <!-- EMAIL -->
+                    <mat-form-field style="width: 350px" appearance="outline">
+                        <mat-label>Email:</mat-label>
+                        <input matInput name="email" [(ngModel)]="form.email" [formControl]="emailFormControl" required>
+                        <mat-icon color="accent" matSuffix>email</mat-icon>
+                        <mat-error *ngIf="emailFormControl.hasError('required')" >The email is required!</mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('email')">The email is valid! Please try Ex: chinhcomhut@gmail.com</mat-error>
+                    </mat-form-field><br>
+                    <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-warning">Change Profile
+                        <mat-icon color="accent" matSuffix>manage_accounts</mat-icon>
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
