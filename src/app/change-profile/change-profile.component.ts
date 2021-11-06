@@ -17,9 +17,6 @@ export class ChangeProfileComponent implements OnInit {
   form: any = {};
   changeProfile: ChangeProfile;
   status = 'Please fill in the form to change your Profile!';
-  error1: any = {
-    message: "nouser"
-  }
   error2: any = {
     message: "noemail"
   }
@@ -38,9 +35,6 @@ export class ChangeProfileComponent implements OnInit {
       this.form.phone
     )
     this.authService.changeProfile(this.changeProfile).subscribe(data =>{
-      if(JSON.stringify(data)==JSON.stringify(this.error1)){
-        this.status = 'The username is existed! Please try again!'
-      }
       if(JSON.stringify(data)==JSON.stringify(this.error2)){
         this.status = 'The email is existed! Please try again!'
       }
@@ -48,6 +42,7 @@ export class ChangeProfileComponent implements OnInit {
         console.log('goi success');
         this.status = 'Change Profile success!';
         this.tokenService.setFullName(this.form.fullName);
+        this.tokenService.setPhone(this.form.phone)
         alert('Change profile success! Please login with new username and password')
         this.tokenService.logOut();
       }

@@ -60,6 +60,15 @@
                     <p> {{email}}</p>
                 </div>
 
+                <div>
+                    <button routerLink="/change-profile">change profile</button>
+                </div>
+                <div>
+                    <button routerLink="/change-avatar">change avatar</button>
+                </div>
+                <div>
+                    <button routerLink="/change-password">change password</button>
+                </div>
             </div>
             <br>
 
@@ -203,6 +212,7 @@
                     Comment
                 </button>
                 <app-comment [post]="post"></app-comment>
+                <app-like [post]="post"></app-like>
             </div>
 
 

@@ -20,6 +20,7 @@ export class AuthService {
   private API_SHOWPOST = environment.API_LOCAL + 'showPost';
   private API_CHANGE_PROFILE = environment.API_LOCAL + 'change-profile';
   private API_CHANGE_AVATAR = environment.API_LOCAL + 'change-avatar';
+  private API_CHANGE_PASSWORD = environment.API_LOCAL + 'change-password';
   data: boolean;
 
   constructor(private http: HttpClient) {
@@ -44,9 +45,15 @@ export class AuthService {
   changeAvatar(info: any): Observable<JwtResponse> {
     return this.http.put<JwtResponse>(this.API_CHANGE_AVATAR, info);
   }
+
   changeProfile(info: any):Observable<JwtResponse>{
     return this.http.put<JwtResponse>(this.API_CHANGE_PROFILE, info);
   }
+
+  changePassword(info: any): Observable<JwtResponse>{
+    return this.http.put<JwtResponse>(this.API_CHANGE_PASSWORD, info);
+  }
+
 
   setData(data) {
     this.data = data;

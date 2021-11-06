@@ -1,5 +1,6 @@
 import {User} from './User';
 import {Comments} from './comment';
+import {Like} from './Like';
 
 export class PostForm {
   public id ?: number;
@@ -10,6 +11,7 @@ export class PostForm {
   public modified_date: any;
   public user: User;
   public commentList : Comments[];
+  public likeList: Like[]
 
   constructor(content: string, status: string, imageUrl: string) {
     this.content = content;
