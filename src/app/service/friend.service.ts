@@ -24,17 +24,5 @@ export class FriendService {
   setFriend(id: number): Observable<any> {
     return this.http.get<any>(this.API_SET_FRIEND + '/' + id);
   }
-  //
-  // pageFriend(request) {
-  //   const params = request;
-  //   return this.http.get(this.API_FRIEND_SEARCH);
-  // }
-  //
-  // searchByNameFriend(request, search) {
-  //   const params = request;
-  //   const nameFriend = search;
-  //
-  //   return this.http.get(this.API_FRIEND_SEARCH + nameFriend);
 
-  // }
 }
