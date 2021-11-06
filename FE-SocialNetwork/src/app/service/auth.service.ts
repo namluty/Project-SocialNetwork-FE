@@ -18,6 +18,7 @@ export class AuthService {
   private API_SIGNIN = environment.API_LOCAL + 'signin';
   private API_POST = environment.API_LOCAL + 'createPost';
   private API_SHOWPOST = environment.API_LOCAL + 'showPost';
+  private API_CHANGE_PROFILE = environment.API_LOCAL + 'change-profile';
   private API_CHANGE_AVATAR = environment.API_LOCAL + 'change-avatar';
   data: boolean;
 
@@ -42,6 +43,9 @@ export class AuthService {
 
   changeAvatar(info: any): Observable<JwtResponse> {
     return this.http.put<JwtResponse>(this.API_CHANGE_AVATAR, info);
+  }
+  changeProfile(info: any):Observable<JwtResponse>{
+    return this.http.put<JwtResponse>(this.API_CHANGE_PROFILE, info);
   }
 
   setData(data) {

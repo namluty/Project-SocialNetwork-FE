@@ -4,7 +4,7 @@ export class SignUpForm {
   public password: string;
   public re_password: string;
   public email: string;
-  public phone: string;
+  public phone: any;
   public dateOfBirth: any;
   public avatarUrl: string;
   public gender: string;
@@ -14,7 +14,7 @@ export class SignUpForm {
   public roles: string[];
 
 
-  constructor(fullName: string, username: string, password: string, re_password: string, email: string, phone: string, dateOfBirth: any) {
+  constructor(fullName: string, username: string, password: string, re_password: string, email: string, phone: any, dateOfBirth: any) {
     this.fullName = fullName;
     this.username = username;
     this.password = password;

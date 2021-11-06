@@ -1,13 +1,13 @@
-export class JwtResponse{
-  public token: string;
-  public name: string;
-  public avatar: string;
-  public roles: any;
+import {Roles} from './Roles';
 
-  constructor(token: string, name: string, avatar: string, roles: any) {
-    this.token = token;
-    this.name = name;
-    this.roles = roles;
-    this.avatar = avatar;
-  }
+export interface JwtResponse {
+  token?: string;
+  avatarUrl?: string;
+  roles?: Roles[];
+  fullName?: string;
+  phone?: string;
+  email?: string;
+  message?: string;
+  isActive?: string;
+  findFriend?: string;
 }
