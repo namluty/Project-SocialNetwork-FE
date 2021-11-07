@@ -16,6 +16,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
   styleUrls: ['./user-account.component.scss']
 })
 export class UserAccountComponent implements OnInit {
+  check = false;
   formComment: any ={}
   comment: Comments;
   form: any = {status: 'public'};
@@ -27,6 +28,7 @@ export class UserAccountComponent implements OnInit {
   isCheckAdmin = false;
   admin: any = ['ADMIN'];
   listUser: User[] = [];
+  listPost: PostForm[] = [];
 
 
   constructor(private tokenService: TokenService,
@@ -52,8 +54,6 @@ export class UserAccountComponent implements OnInit {
     });
   };
 
-  listPost: PostForm[] = [];
-
   getListPost() {
     this.postService.showListPost().subscribe(data => {
       this.listPost = data;
@@ -65,6 +65,7 @@ export class UserAccountComponent implements OnInit {
   // addPost() {
   //   this.getListPost();
   // }
+
 
   ngPost() {
     this.post = new PostForm(
@@ -90,5 +91,13 @@ export class UserAccountComponent implements OnInit {
     this.friendService.searchByFullName(name).subscribe(data => {
       this.listUser = data;
     });
+  }
+
+  profile() {
+    this.check = true;
+  }
+
+  timeLine() {
+    this.check = false;
   }
 }

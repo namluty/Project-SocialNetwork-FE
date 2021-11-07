@@ -17,7 +17,8 @@
 <!-- Navbar -->
 <div class="w3-top">
     <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+        <a (click)="timeLine()" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i
+                class="fa fa-home w3-margin-right"></i>Logo</a>
         <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i
                 class="fa fa-globe"></i></a>
         <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i
@@ -55,7 +56,7 @@
                 <div class="w3-container">
                     <img src="{{avatar}}" style="height:106px;width:106px" class="w3-center">
                     <hr>
-                    <p> {{fullName}}</p>
+                    <a (click)="profile()"> {{fullName}}</a>
                     <p> {{phone}}</p>
                     <p> {{email}}</p>
                 </div>
@@ -146,6 +147,9 @@
                 <p><strong>Hey you!</strong></p>
                 <p>People are looking at your profile. Let's be friend.</p>
                 <p>Mọi người đang xem hồ sơ của bạn. Hãy kết bạn với tôi.</p>
+                <app-show-add-friend></app-show-add-friend>
+                <br>
+                <app-list-friend></app-list-friend>
             </div>
 
             <!-- End Left Column -->
@@ -190,29 +194,31 @@
                 </div>
             </div>
 
-
-            <div *ngFor="let post of listPost" class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                <p>{{post.user.fullName}}</p>
-                <img src="{{post.user.avatarUrl}}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
-                     style="width:60px">
-                <span class="w3-right w3-opacity">1 min</span>
-                <h4>{{post.status}}</h4><br>
-                <hr class="w3-clear">
-                <p>{{post.content}}</p>
-                <div class="w3-row-padding" style="margin:0 -16px">
-                    <div class="w3-half">
-                        <img src="{{post.imageUrl}}" style="width:100%"
-                             class="w3-margin-bottom">
+            <div *ngIf="check"><app-profile></app-profile></div>
+            <div *ngIf="!check">
+                <div *ngFor="let post of listPost" class="w3-container w3-card w3-white w3-round w3-margin"><br>
+                    <p>{{post.user.fullName}}</p>
+                    <img src="{{post.user.avatarUrl}}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
+                         style="width:60px">
+                    <span class="w3-right w3-opacity">1 min</span>
+                    <h4>{{post.status}}</h4><br>
+                    <hr class="w3-clear">
+                    <p>{{post.content}}</p>
+                    <div class="w3-row-padding" style="margin:0 -16px">
+                        <div class="w3-half">
+                            <img src="{{post.imageUrl}}" style="width:100%"
+                                 class="w3-margin-bottom">
+                        </div>
                     </div>
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>
+                        Like
+                    </button>
+                    <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>
+                        Comment
+                    </button>
+                    <app-comment [post]="post"></app-comment>
+                    <app-like [post]="post"></app-like>
                 </div>
-                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>
-                    Like
-                </button>
-                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>
-                    Comment
-                </button>
-                <app-comment [post]="post"></app-comment>
-                <app-like [post]="post"></app-like>
             </div>
 
 

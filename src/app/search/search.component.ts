@@ -35,11 +35,11 @@ export class SearchComponent implements OnInit {
     this.getListRequest(request);
   }
 
-  // addFriend(id: number) {
-  //   this.friendService.sendAddFriend(id).subscribe(data => {
-  //     console.log(data, 'tra ve cai gi');
-  //   });
-  // }
+  addFriend(id: number) {
+    this.friendService.sendAddFriend(id).subscribe(data => {
+      console.log(data, 'friend nhan loi moi kb');
+    });
+  }
   // setFriend(id: number){
   // this.friendService.setFriend(id).subscribe(setf =>{
   //   console.log(setf, 'cai gi day');
