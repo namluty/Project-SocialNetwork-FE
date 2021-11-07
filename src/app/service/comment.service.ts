@@ -5,6 +5,7 @@ import {PostForm} from "../model/PostForm";
 import {Observable} from "rxjs";
 import {Comments} from '../model/comment';
 import {any} from 'codelyzer/util/function';
+import {Response} from '../model/response';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class CommentService {
     return this.http.put<Comments>(this.API_EDIT_COMMENT +'/' +id, comment);
   }
 
-  deleteComment(id:number): Observable<string> {
-    return this.http.delete<string>(this.API_DELETE_COMMENT +'/' + id);
+  deleteComment(id:number): Observable<Response> {
+    return this.http.delete<Response>(this.API_DELETE_COMMENT +'/' + id);
   }
 
   getListComment(id: number) : Observable<any>{

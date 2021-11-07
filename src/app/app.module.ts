@@ -41,7 +41,6 @@ import { AdminManagerComponent } from './adminManage/admin-manager/admin-manager
 import { PageUserComponent } from './adminManage/page-user/page-user.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SearchComponent } from './search/search.component';
-import { AddFriendComponent } from './add-friend/add-friend.component';
 import {LoginComponent} from './form-login/login/login.component';
 import {CommentComponent} from './comment/comment.component';
 import { LikeComponent } from './like/like.component';
@@ -51,6 +50,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ShowAddFriendComponent } from './friend/show-add-friend/show-add-friend.component';
 import { ListFriendComponent } from './friend/list-friend/list-friend.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FriendRequestComponent } from './friend/friend-request/friend-request.component';
+import { NotificationComponent } from './notification/notification.component';
 
 registerLocaleData(en);
 
@@ -68,7 +69,7 @@ export const appRoutes: Routes = [
 
 @NgModule({
   declarations: [CommentComponent, AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
-    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent],
+    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
