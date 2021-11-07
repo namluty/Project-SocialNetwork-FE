@@ -21,6 +21,9 @@ export class AuthService {
   private API_CHANGE_PROFILE = environment.API_LOCAL + 'change-profile';
   private API_CHANGE_AVATAR = environment.API_LOCAL + 'change-avatar';
   private API_CHANGE_PASSWORD = environment.API_LOCAL + 'change-password';
+  private API_SHOW_POST_PROFILE = environment.API_LOCAL + 'showPostProfile';
+
+
   data: boolean;
 
   constructor(private http: HttpClient) {
@@ -52,6 +55,10 @@ export class AuthService {
 
   changePassword(info: any): Observable<JwtResponse>{
     return this.http.put<JwtResponse>(this.API_CHANGE_PASSWORD, info);
+  }
+
+  showPostProfile(): Observable<PostForm[]>{
+    return this.http.get<PostForm[]>(this.API_SHOW_POST_PROFILE);
   }
 
 
