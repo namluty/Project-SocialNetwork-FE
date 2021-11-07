@@ -11,7 +11,7 @@ import {PostForm} from '../model/PostForm';
 export class NotificationComponent implements OnInit {
   notifications: Notification[] =[];
   post: PostForm;
-  check= false;
+  checkNotify= false;
 
   constructor(private notificationService: NotificationService) { }
 
@@ -29,14 +29,14 @@ export class NotificationComponent implements OnInit {
   getPostNotification(id: number) {
     this.notificationService.getPostNotification(id).subscribe(data =>{
       console.log(data, "post notification");
-      this.check=true;
+      this.checkNotify=true;
       this.post = data;
     })
 
   }
 
   check1() {
-    this.check=false;
+    this.checkNotify=false;
     this.getNotification();
   }
 }

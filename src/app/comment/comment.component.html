@@ -16,6 +16,6 @@
         <input *ngIf="comments.check" type="text" [(ngModel)]="comments.content" (keydown.enter)="submitComment(comments)">
         </div>
         <button (click)="editComment(comments)">sua cmt</button>
-        <button (click)="deleteComment(comments)">xóa comment</button>
+        <button (click)="deleteComment(comments, i)">xóa comment</button>
     </div>
 </div>

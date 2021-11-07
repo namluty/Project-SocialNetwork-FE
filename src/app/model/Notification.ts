@@ -6,4 +6,5 @@ export class Notification{
   notify: string;
   like: Like;
   comment: Comments;
+  postId?: number;
 }
