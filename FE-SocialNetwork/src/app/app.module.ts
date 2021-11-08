@@ -22,7 +22,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 
-
 import {UserAccountComponent} from './form-login/user-account/user-account.component';
 import {NZ_I18N} from 'ng-zorro-antd/i18n';
 import {en_US} from 'ng-zorro-antd/i18n';
@@ -53,6 +52,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { FriendRequestComponent } from './friend/friend-request/friend-request.component';
 import { NotificationComponent } from './notification/notification.component';
 import {MatListModule} from '@angular/material/list';
+import {NzAvatarModule} from 'ng-zorro-antd/avatar';
+import {NzTypographyModule} from 'ng-zorro-antd/typography';
+import {NzListModule} from 'ng-zorro-antd/list';
+import {NzProgressModule} from 'ng-zorro-antd/progress';
+import {NzSelectModule} from 'ng-zorro-antd/select';
+import {NzInputModule} from 'ng-zorro-antd/input';
 
 registerLocaleData(en);
 
@@ -65,7 +70,9 @@ export const appRoutes: Routes = [
   {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}},
   {path: 'change-profile', component: ChangeProfileComponent},
   {path: 'change-avatar', component: ChangeAvatarComponent},
-  {path: 'change-password', component:ChangePasswordComponent}
+  {path: 'change-password', component:ChangePasswordComponent},
+  {path: 'user-profile', component:ProfileComponent},
+
 ];
 
 @NgModule({
@@ -87,7 +94,8 @@ export const appRoutes: Routes = [
     MatButtonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule,
-    _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule, MatListModule
+    _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule, MatListModule, NzAvatarModule, NzTypographyModule,
+    NzListModule, NzProgressModule, NzSelectModule, NzInputModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]

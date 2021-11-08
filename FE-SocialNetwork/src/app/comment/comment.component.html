@@ -3,10 +3,10 @@
         <!-- CONTENT -->
         <mat-form-field style="width: 80%" appearance="outline">
             <input name="content" formControlName="content" matInput
-                   placeholder="Nhập bình luận"><br>
+                   placeholder="Enter a comment...">
         </mat-form-field>
         <button mat-stroked-button color="accent" type="submit"
-                class="mat-button-toggle-group btn-outline-primary">Bình luận
+                class="mat-button-toggle-group btn-outline-primary">&ensp;Comment
         </button>
     </form>
     <div>{{post.commentList.length}}</div>
@@ -14,11 +14,10 @@
 <div class="column" *ngFor="let comments of post.commentList; index as i">
     <div class="card">
         <div><strong>{{comments.user.fullName}}</strong> : <span *ngIf="!comments.check">{{comments.content}}</span>
-            <input *ngIf="comments.check" type="text" [(ngModel)]="comments.content"
+            <input nz-input style="width: 85%" *ngIf="comments.check" type="text" [(ngModel)]="comments.content"
                    (keydown.enter)="submitComment(comments)">
         </div>
         <button (click)="editComment(comments)">sua cmt</button>
-<!--        <button (click)="editComment(comments)"><mat-icon color="accent" matSuffix>edit_note</mat-icon></button>-->
         <button (click)="deleteComment(comments, i)">xóa comment</button>
     </div>
 </div>

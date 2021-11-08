@@ -87,9 +87,14 @@ export class UserAccountComponent implements OnInit {
     );
     this.postService.createPost(this.post).subscribe(data => {
       console.log('data', data);
-      this.form.content = '';
+      this.form = {
+        content: null,
+        status: 'public',
+        imageUrl: null
+      };
+      this.arrImage = [];
       this.getListPost();
-      window.location.reload();
+      // window.location.reload();
     });
   }
 

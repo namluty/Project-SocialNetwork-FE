@@ -1,17 +1,6 @@
-<!--<div>-->
-<!--    <input type="file" (change)="onFileChanged($event)"><br>-->
-<!--    <mat-spinner *ngIf="checkUploadAvatar"></mat-spinner>-->
-<!--&lt;!&ndash;    <button *ngIf="downloadURL?!selectedFile:selectedFile" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-success"&ndash;&gt;-->
-<!--&lt;!&ndash;            (click)="onUpload()">Upload Avatar</button>&ndash;&gt;-->
-<!--    <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">-->
-<!--        <img [src]="downloadURL" style="width: 300px; height: auto">-->
-<!--    </div>-->
-<!--</div>-->
-
 <div>
-    <input type="file" multiple (change)="onFileChanged($event)"><br>
-    <!-- Khi nao thuc hien upload thi button nay moi hien, con co URL tuc upload thanh cong thi button nay an di-->
-    <mat-spinner *ngIf="checkUploadAvatar"></mat-spinner>
+    <input class="form-control" type="file" multiple (change)="onFileChanged($event)">
+    <nz-progress *ngIf="checkUploadAvatar" [nzPercent]="0.01" [nzStrokeColor]="{ '0%': '#ab60ce', '100%': '#cb1c90' }"></nz-progress>
     <div class="row">
         <div class="column" *ngFor="let song of listIMG; let a = index">
             <div class="card">

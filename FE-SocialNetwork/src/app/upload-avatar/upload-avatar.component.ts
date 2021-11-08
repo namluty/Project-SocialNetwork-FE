@@ -15,36 +15,40 @@ export class UploadAvatarComponent implements OnInit {
   myMap = new Map();
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
+
   constructor(private afStorage: AngularFireStorage) {
   }
+
   ngOnInit(): void {
   }
+
   //Khi upload file qua thẻ input dưới dạng 1 hoặc nhiều file thì tệp đó thông qua sự kiện (change) $event được kích hoạt. Và tất cả file upload sẽ lưu trữ
   // trong $event.target.files.
-  onFileChanged($event){
-    this.selectedFile  = $event.target.files[0];
-    this.onUpload();
+  onFileChanged($event: Event) {
+    const files: any = ($event.target as HTMLInputElement).files;
+    if (files.length === 1) {
+      // this.selectedFile = files[0];
+      this.onUpload(files[0]);
+    } else {
+      for (const file of files) {
+        console.log(file);
+        this.onUpload(file);
+      }
+    }
   }
-  onUpload(){
+
+  onUpload(file?: File): void {
     this.checkUploadAvatar = true;
     const id = Math.random().toString(36).substring(2); //Tạo ra 1 name riêng cho mỗi DB firebase;
     this.ref = this.afStorage.ref(id);
-    this.ref.put(this.selectedFile).then(snapshot =>{
+    this.ref.put(file).then(snapshot => {
       return snapshot.ref.getDownloadURL(); //Tra ve 1 chuoi sieu van ban tren FB.
-    }).then( downloadURL =>{ //chuyen giao link tu nhung component khac nhau khi su upload
-      this.downloadURL = downloadURL;
-      this.giveURLtoCreate.emit(this.downloadURL);
+    }).then(downloadURL => { //chuyen giao link tu nhung component khac nhau khi su upload
+      this.giveURLtoCreate.emit(downloadURL);
       this.checkUploadAvatar = false;
-      this.listIMG.push(downloadURL)
-      console.log('LIST ==> ', this.listIMG);
-      for(let i=0; i<this.listIMG.length;i++){
-        this.myMap.set(i,this.listIMG[i])
-      }
-      return downloadURL;
     })
-      .catch(error =>{
+      .catch(error => {
         console.log(`Failed to upload avatar and get link ${error}`);
-      })
+      });
   }
-
 }

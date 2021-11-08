@@ -39,12 +39,12 @@ export class ChangeProfileComponent implements OnInit {
         this.status = 'The email is existed! Please try again!'
       }
       if(JSON.stringify(data)==JSON.stringify(this.success)){
-        console.log('goi success');
         this.status = 'Change Profile success!';
         this.tokenService.setFullName(this.form.fullName);
         this.tokenService.setPhone(this.form.phone)
         alert('Change profile success! Please login with new username and password')
         this.tokenService.logOut();
+
       }
     })
   }

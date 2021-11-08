@@ -7,13 +7,13 @@
                     <div class="column" *ngFor="let notification of notifications">
                         <div class="card">
                             <a (click)="getPostNotification(notification.postId)">{{notification.notify}}</a>
-                            <div *ngIf="checkNotify">
-                                <p>content: {{post.content}}</p>
-                                <p>{{post.likeList.length}} like</p>
-                                <p>{{post.commentList.length}} comment</p>
-                                <a (click)="check1()">ẩn bài post</a>
-                            </div>
                         </div>
+                    </div>
+                    <div *ngIf="checkNotify">
+                        <p>content: {{post.content}}</p>
+                        <p>{{post.likeList.length}} like</p>
+                        <p>{{post.commentList.length}} comment</p>
+                        <a (click)="check1()">ẩn bài post</a>
                     </div>
                 </div>
             </mat-card>

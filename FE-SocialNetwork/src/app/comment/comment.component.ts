@@ -39,8 +39,10 @@ export class CommentComponent implements OnInit {
   deleteComment(comments: Comments, index: number){
     this.commentService.deleteComment(comments.id).subscribe(data =>{
       if(data.code === '200'){
-        console.log(data, 'deleteComment');
-        this.post.commentList.splice(index);
+        const i = index;
+        const a1 = this.post.commentList.slice(0, i);
+        const a2 = this.post.commentList.slice(i + 1, this.post.commentList.length);
+        [...this.post.commentList] = a1.concat(a2);
       }else {
         console.log('loi');
       }
@@ -52,4 +54,5 @@ export class CommentComponent implements OnInit {
       comments.check = false;
     },error => {console.log(error)});
   }
+
 }
