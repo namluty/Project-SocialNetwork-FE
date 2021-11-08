@@ -5,6 +5,7 @@ import {PostForm} from "../model/PostForm";
 import {Observable} from "rxjs";
 import {Comments} from '../model/comment';
 import {any} from 'codelyzer/util/function';
+import {Response} from '../model/response';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class CommentService {
   private API_CREATE_COMMENT = environment.API_LOCAL + 'comment';
   private API_LIST_COMMENT = environment.API_LOCAL + 'showComment';
   private API_EDIT_COMMENT = environment.API_LOCAL + 'updatecomment';
+  private API_DELETE_COMMENT = environment.API_LOCAL + 'deletecomment';
 
   constructor(private http :HttpClient) { }
 
@@ -24,8 +26,12 @@ export class CommentService {
     return this.http.put<Comments>(this.API_EDIT_COMMENT +'/' +id, comment);
   }
 
+  deleteComment(id:number): Observable<Response> {
+    return this.http.delete<Response>(this.API_DELETE_COMMENT +'/' + id);
+  }
+
   getListComment(id: number) : Observable<any>{
-    return  this.http.get<any>(this.API_LIST_COMMENT +'/' + id)
+    return  this.http.get<any>(this.API_LIST_COMMENT +'/' + id);
   }
 
 

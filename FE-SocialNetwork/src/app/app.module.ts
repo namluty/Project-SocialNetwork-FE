@@ -22,6 +22,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 
+
 import {UserAccountComponent} from './form-login/user-account/user-account.component';
 import {NZ_I18N} from 'ng-zorro-antd/i18n';
 import {en_US} from 'ng-zorro-antd/i18n';
@@ -40,26 +41,36 @@ import { AdminManagerComponent } from './adminManage/admin-manager/admin-manager
 import { PageUserComponent } from './adminManage/page-user/page-user.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SearchComponent } from './search/search.component';
-import { AddFriendComponent } from './add-friend/add-friend.component';
 import {LoginComponent} from './form-login/login/login.component';
 import {CommentComponent} from './comment/comment.component';
-import { PostComponent } from './post/post.component';
+import { LikeComponent } from './like/like.component';
+import { ChangeAvatarComponent } from './change-avatar/change-avatar.component';
+import {UploadAvatarComponent} from './upload-avatar/upload-avatar.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ShowAddFriendComponent } from './friend/show-add-friend/show-add-friend.component';
+import { ListFriendComponent } from './friend/list-friend/list-friend.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FriendRequestComponent } from './friend/friend-request/friend-request.component';
+import { NotificationComponent } from './notification/notification.component';
+import {MatListModule} from '@angular/material/list';
 
 registerLocaleData(en);
 
 export const appRoutes: Routes = [
-  {path: '', component: HomeComponent, data: {title: 'Login'}},
+  {path: '', component: HomeComponent, data: {title: 'Home'}},
   {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
   {path: 'user-account', component: UserAccountComponent},
   {path: 'upload-avatar', component: UploadFileComponent},
-  {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}}
-
+  {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}},
+  {path: 'change-profile', component: ChangeProfileComponent},
+  {path: 'change-avatar', component: ChangeAvatarComponent},
+  {path: 'change-password', component:ChangePasswordComponent}
 ];
 
 @NgModule({
   declarations: [CommentComponent, AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
-    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, AddFriendComponent, PostComponent],
+    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -76,7 +87,7 @@ export const appRoutes: Routes = [
     MatButtonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule,
-    _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule
+    _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule, MatListModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]

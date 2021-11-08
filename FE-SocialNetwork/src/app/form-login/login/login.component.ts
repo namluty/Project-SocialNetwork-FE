@@ -3,7 +3,7 @@ import {SignInForm} from '../../model/SignInForm';
 import {AuthService} from '../../service/auth.service';
 import {Router} from '@angular/router';
 import {TokenService} from '../../service/token.service';
-
+import {log} from 'ng-zorro-antd/core/logger';
 
 @Component({
   selector: 'app-login',
@@ -16,29 +16,46 @@ export class LoginComponent implements OnInit {
   signInForm: SignInForm;
   checkRegister = false;
   checkLoginFailed = false;
-  constructor(  private authService: AuthService,
-                private tokenService: TokenService,
-                private router: Router) { }
+
+  constructor(private authService: AuthService,
+              private tokenService: TokenService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
-    if(this.authService.getData()){
+    if (this.authService.getData()) {
       this.checkRegister = true;
     }
   }
-  ngSubmit(){
+
+  ngSubmit() {
+
     this.signInForm = new SignInForm(
       this.form.username,
       this.form.password
     )
+    console.log('signInForm --> ',this.signInForm);
+    console.log(this.signInForm);
     this.authService.signin(this.signInForm).subscribe(data => {
-      if (data.token != undefined) {
-        this.tokenService.setToken(data.token);
-        this.tokenService.setFullName(data.fullName);
-        this.tokenService.setRole(data.roles);
-        this.tokenService.setAvatarUrl(data.avatarUrl);
-        this.router.navigate(['user-account']).then(() => {
-        });
+      console.log(data);
+      if (data.message == 'user_was_blocked') {
+        alert("Account is Blocked!!!")
+      } else {
+        if (data.token != undefined) {
+          this.tokenService.setToken(data.token);
+          this.tokenService.setFullName(data.fullName);
+          this.tokenService.setRole(data.roles);
+          this.tokenService.setAvatarUrl(data.avatarUrl);
+          this.tokenService.setPhone(data.phone);
+          this.tokenService.setEmail(data.email);
+          this.tokenService.setIsActive(data.isActive);
+          // this.router.navigate(['user-account']).then(() => {
+          // });
+          console.log('xuong duoc day khong');
+          this.router.navigate(['user-account'])
+
+        }
       }
-    });
+    },error => console.log(error));
   }
 }

@@ -1,4 +1,4 @@
-<div class="w3-container w3-padding">
+<div class="w3-container w3-padding" xmlns="http://www.w3.org/1999/html">
     <form class="" [formGroup]="commentForm" (ngSubmit)="ngComment()" novalidate>
         <!-- CONTENT -->
         <mat-form-field style="width: 80%" appearance="outline">
@@ -9,6 +9,7 @@
                 class="mat-button-toggle-group btn-outline-primary">Bình luận
         </button>
     </form>
+    <div>{{post.commentList.length}}</div>
 </div>
 <div class="column" *ngFor="let comments of post.commentList; index as i">
     <div class="card">
@@ -17,5 +18,7 @@
                    (keydown.enter)="submitComment(comments)">
         </div>
         <button (click)="editComment(comments)">sua cmt</button>
+<!--        <button (click)="editComment(comments)"><mat-icon color="accent" matSuffix>edit_note</mat-icon></button>-->
+        <button (click)="deleteComment(comments, i)">xóa comment</button>
     </div>
 </div>

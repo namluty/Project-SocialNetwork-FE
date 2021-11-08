@@ -1,19 +1,18 @@
-<div class="container" style="background: url(https://images5.alphacoders.com/689/689595.jpg);width: 120%;height: 100%">
+<div class="container">
     <div class="row">
-        <div class="col-4" style="margin-top: 170px;margin-left: 650px">
-            <mat-card>
-                <form class="form-login" #f="ngForm" (ngSubmit)="f.form.valid&&ngSubmit()" novalidate>
-                    <mat-error *ngIf="checkRegister" class="alert alert-primary">Create Account Success! Please
-                        login
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="form-login" #f="ngForm" (ngSubmit)="ngSubmit()" novalidate>
+                    <mat-error *ngIf="checkRegister" class="alert alert-primary">Create Account Success! Please login
                     </mat-error>
                     <mat-error *ngIf="checkLoginFailed" class="alert alert-danger">Login Failed! Please check your
                         username or password
                     </mat-error>
                     <!-- USERNAME -->
-                    <mat-form-field style="width: 300px" appearance="outline">
+                    <mat-form-field style="width: 350px" appearance="outline">
                         <mat-label>Username:</mat-label>
                         <input name="username" [(ngModel)]="form.username" matInput placeholder="Placeholder"
-                               #username="ngModel">
+                               #username="ngModel" minlength="3" maxlength="100" required>
                         <mat-icon color="accent" matSuffix>person_outline</mat-icon>
                         <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>
                         <mat-error *ngIf="username.hasError('minlength')">The name must more than 3 character
@@ -21,11 +20,10 @@
                     </mat-form-field>
                     <br>
                     <!--PASSWORD -->
-                    <mat-form-field style="width: 300px" appearance="outline">
+                    <mat-form-field style="width: 350px" appearance="outline">
                         <mat-label>Enter your password</mat-label>
-                        <input name="password" [(ngModel)]="form.password" matInput
-                               [type]="hide ? 'password' : 'text'"
-                               #password="ngModel" >
+                        <input name="password" [(ngModel)]="form.password" matInput [type]="hide ? 'password' : 'text'"
+                               #password="ngModel" required minlength="6" maxlength="20">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
                             <mat-icon color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -35,19 +33,12 @@
                         </mat-error>
                     </mat-form-field>
                     <br>
-                    <button mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">
-                        LOGIN
+                    <button type="submit" mat-stroked-button color="accent"
+                            class="mat-button-toggle-group btn-outline-primary">Login
                         <mat-icon color="accent" matSuffix>login</mat-icon>
-                    </button>
-                    <br><br>
-                    <button routerLink="/register" mat-stroked-button color="accent"
-                            class="mat-button-toggle-group btn-outline-success">REGISTER
                     </button>
                 </form>
             </mat-card>
         </div>
     </div>
 </div>
-
-
-

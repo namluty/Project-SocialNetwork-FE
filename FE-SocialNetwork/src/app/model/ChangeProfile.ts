@@ -1,7 +1,7 @@
 export class ChangeProfile{
   fullName: string
   email: string;
-  phone: any;
+  phone?: any;
 
 
   constructor(fullName: string, email: string, phone: any) {

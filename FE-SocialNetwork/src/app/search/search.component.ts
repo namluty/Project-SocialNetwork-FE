@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
 
   addFriend(id: number) {
     this.friendService.sendAddFriend(id).subscribe(data => {
-      console.log(data, 'tra ve cai gi');
+      console.log(data, 'friend nhan loi moi kb');
     });
   }
   // setFriend(id: number){

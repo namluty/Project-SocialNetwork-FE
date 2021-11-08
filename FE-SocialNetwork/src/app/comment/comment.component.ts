@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Comments} from '../model/comment';
-import {CommentService} from '../service/comment.service';
+import { Router } from '@angular/router';
+import { Comments } from '../model/comment';
+import { CommentService } from '../service/comment.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostForm} from '../model/PostForm';
 
@@ -12,39 +12,44 @@ import {PostForm} from '../model/PostForm';
 })
 export class CommentComponent implements OnInit {
   commentForm: FormGroup;
-  comments: Comments[] = [];
+  comments : Comments[] =[];
   @Input() post: PostForm;
-
   constructor(private fb: FormBuilder,
-              private commentService: CommentService) {
-  }
+              private commentService : CommentService) { }
 
   ngOnInit(): void {
     this.commentForm = this.fb.group({
-      content: [null, [Validators.required, Validators.min(3), Validators.max(1000)]]
-    });
+      content:[null, [Validators.required, Validators.min(3), Validators.max(1000)]]
+    })
   }
 
   ngComment() {
     this.commentService.createComment(this.post.id, this.commentForm.value).subscribe(data => {
       console.log('data', data);
       this.commentForm.reset();
-      this.post.commentList.push(data);
-    }, error => {
-      console.log(error);
-    });
+      this.post.commentList.unshift(data);
+    },error => {console.log(error)});
   }
 
 
   editComment(comments: Comments) {
-    comments.check = true;
+    comments.check =true;
+  }
+
+  deleteComment(comments: Comments, index: number){
+    this.commentService.deleteComment(comments.id).subscribe(data =>{
+      if(data.code === '200'){
+        console.log(data, 'deleteComment');
+        this.post.commentList.splice(index);
+      }else {
+        console.log('loi');
+      }
+    },error => {console.log(error)});
   }
 
   submitComment(comments: Comments) {
     this.commentService.editComment(comments.id, comments).subscribe(data => {
       comments.check = false;
-    }, error => {
-      console.log(error);
-    });
+    },error => {console.log(error)});
   }
 }
