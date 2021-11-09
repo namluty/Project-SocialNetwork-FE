@@ -1,5 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from '@angular/fire/storage';
+import {NzUploadChangeParam} from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-upload-avatar',
@@ -50,4 +51,5 @@ export class UploadAvatarComponent implements OnInit {
         console.log(`Failed to upload avatar and get link ${error}`);
       });
   }
+
 }

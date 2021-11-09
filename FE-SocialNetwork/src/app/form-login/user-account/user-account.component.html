@@ -38,12 +38,12 @@ Navbar
                 <button (click)="searchName(element.value)" style="margin-top: 8px; height: 36px"
                         class="btn btn-outline-success" type="submit">Search
                 </button>
-
                 <a style="position: fixed; right: 2%;top:1%">
                     <img [matMenuTriggerFor]="menu" src="{{avatar}}" class="w3-circle" style="height:40px;width:40px"
                          alt="Avatar">
                     <mat-menu #menu="matMenu">
-                        <button style="height: 30px; width: 40px" (click)="logOut()" mat-button>Log Out</button>
+                        <button style="text-align:center" (click)="logOut()" mat-button>Log Out</button><br>
+                        <button  mat-button>...</button>
                     </mat-menu>
                 </a>
             </form>
@@ -68,70 +68,68 @@ Navbar
             <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
                     <br>
-                    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="90" nzIcon="user"
+                    <nz-avatar (click)="profile()" class="w3-left w3-circle w3-margin-right" [nzSize]="90" nzIcon="user"
                                nzSrc="{{avatar}}"></nz-avatar>
                     <br>
-                    <h4 (click)="profile()" style="cursor: pointer; text-align: center">{{fullName}}</h4>
-                    <p> {{phone}}</p>
-                    <p> {{email}}</p><br>
+                    <span style="font-size:large" nz-typography nzType="success"><B>{{fullName}}</B></span><br>
+                    <span nz-typography><code>{{phone}}</code></span><br>
+                    <span style="color: cadetblue" nz-typography nzType="secondary">{{email}}</span><br><br>
                     <nz-list>
-                        <nz-list-item role="listitem" routerLink="/change-profile">change profile</nz-list-item>
-                        <nz-list-item role="listitem" routerLink="/change-avatar">change avatar</nz-list-item>
-                        <nz-list-item role="listitem" routerLink="/change-password">change password</nz-list-item>
+                        <span style="color: sandybrown" routerLink="/change-profile" nz-typography><I>Change Profile</I></span><br>
+                        <span style="color: cornflowerblue" routerLink="/change-avatar" nz-typography><I>Change Avatar</I></span><br>
+                        <span nz-typography nzType="danger" routerLink="/change-password"><I>Change Password</I></span>
                     </nz-list>
                 </div>
             </div>
             <br>
 
             <!-- Accordion -->
-            <div class="w3-card w3-round">
-                <div class="w3-white">
-                    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i
-                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups
-                    </button>
-                    <div id="Demo1" class="w3-hide w3-container">
-                        <p>Some text..</p>
-                    </div>
-                    <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i
-                            class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events
-                    </button>
-                    <div id="Demo2" class="w3-hide w3-container">
-                        <p>Some other text..</p>
-                    </div>
-                    <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i
-                            class="fa fa-users fa-fw w3-margin-right"></i> My Photos
-                    </button>
-                    <div id="Demo3" class="w3-hide w3-container">
-                        <div class="w3-row-padding">
-                            <br>
-                            <div class="w3-half">
-                                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+<!--            <div class="w3-card w3-round">-->
+<!--                <div class="w3-white">-->
+<!--                    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
+<!--                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups-->
+<!--                    </button>-->
+<!--                    <div id="Demo1" class="w3-hide w3-container">-->
+<!--                        <p>Some text..</p>-->
+<!--                    </div>-->
+<!--                    <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
+<!--                            class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events-->
+<!--                    </button>-->
+<!--                    <div id="Demo2" class="w3-hide w3-container">-->
+<!--                        <p>Some other text..</p>-->
+<!--                    </div>-->
+<!--                    <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
+<!--                            class="fa fa-users fa-fw w3-margin-right"></i> My Photos-->
+<!--                    </button>-->
+<!--                    <div id="Demo3" class="w3-hide w3-container">-->
+<!--                        <div class="w3-row-padding">-->
+<!--                            <br>-->
+<!--                            <div class="w3-half">-->
+<!--                                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">-->
+<!--                            </div>-->
+<!--                            <div class="w3-half">-->
+<!--                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
+<!--                            </div>-->
+<!--                            <div class="w3-half">-->
+<!--                                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">-->
+<!--                            </div>-->
+<!--                            <div class="w3-half">-->
+<!--                                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">-->
+<!--                            </div>-->
+<!--                            <div class="w3-half">-->
+<!--                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
+<!--                            </div>-->
+<!--                            <div class="w3-half">-->
+<!--                                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!-- Block/ Unblock -->
             <div class="w3-card w3-round w3-white w3-hide-small">
                 <div *ngIf="isCheckAdmin" class="w3-container">
-                    <span nz-typography nzType="danger">Account Manager</span>
                     <app-admin-manager></app-admin-manager>
                 </div>
             </div>
@@ -158,20 +156,22 @@ Navbar
                         <div class="w3-container w3-padding">
                             <form class="" #f="ngForm" (ngSubmit)="f.form.valid && ngPost()" novalidate>
                                 <!-- CONTENT -->
-                                <mat-form-field style="width: 80%" appearance="outline">
+                                <div>
+                                <mat-form-field style="width: 87%" appearance="outline">
                                     <input name="content" [(ngModel)]="form.content" matInput
                                            placeholder="How are you today?"><br>
                                     <app-upload-avatar (giveURLtoCreate)="addImage($event)"></app-upload-avatar>
                                 </mat-form-field>
-                                <nz-select name="status" ngModel="lucy" [(ngModel)]="form.status" nzAllowClear
-                                           nzPlaceHolder="Choose">
-                                    <nz-option nzValue="public" nzLabel="Public"></nz-option>
-                                    <nz-option nzValue="friend" nzLabel="Friend"></nz-option>
-                                    <nz-option nzValue="onlyme" nzLabel="Onlyme"></nz-option>
-                                </nz-select>
-                                <button mat-stroked-button color="accent"
-                                        class="mat-button-toggle-group btn-outline-primary">Đăng Bài
-                                </button>
+                                    <nz-select name="status" ngModel="lucy" style="color: green" [(ngModel)]="form.status" nzAllowClear
+                                               nzPlaceHolder="Choose">
+                                        <nz-option nzValue="public" nzLabel="Public"></nz-option>
+                                        <nz-option nzValue="friend" nzLabel="Friend"></nz-option>
+                                        <nz-option nzValue="onlyme" nzLabel="Onlyme"></nz-option>
+                                    </nz-select>
+                                    <button mat-stroked-button color="accent"
+                                            class="mat-button-toggle-group btn-outline-primary">POST
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

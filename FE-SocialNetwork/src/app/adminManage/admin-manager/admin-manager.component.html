@@ -2,10 +2,12 @@
     <div class="w3-row">
         <div class="col-12" style="margin-top: 20px">
             <div class="row">
+                <span nz-typography nzType="danger">Account Manager</span><br>
                 <div class="column" *ngFor="let user of users">
+                    <hr>
+                    <span nz-typography nzType="warning">Block/Unblock</span>
                     <mat-icon (click)="blockUser(user.id)" color="accent" matSuffix>no_encryption_gmailerrorred
                     </mat-icon>
-                    <span nz-typography nzType="warning">Block/Unblock</span>
                     <hr>
                     <i style="font-size: 1.5vw; color: crimson">{{user.fullName}}</i><br>
                     <span nz-typography nzType="warning">Status:<i
@@ -16,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <mat-paginator [pageSizeOptions]="[3,15,30,90]" [length]="totalElements"
+        <mat-paginator [pageSizeOptions]="[5,15,30,90]" [length]="totalElements"
                        (page)="nextPage($event)"></mat-paginator>
     </div>
 </div>
