@@ -13,6 +13,7 @@ export class LikeComponent implements OnInit {
   @Input() post: PostForm;
   likes: Like[]=[];
   comments : Comments[] =[];
+  isLiked = false;
   constructor(private likeService: LikeService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class LikeComponent implements OnInit {
   ngLike(){
     console.log(this.post.id);
     this.likeService.createLike(this.post.id).subscribe(data =>{
+      this.isLiked = !this.isLiked;
       this.sumLike();
     })
   }

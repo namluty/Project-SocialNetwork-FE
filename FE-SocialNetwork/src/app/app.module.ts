@@ -59,6 +59,7 @@ import {NzProgressModule} from 'ng-zorro-antd/progress';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzButtonModule} from 'ng-zorro-antd/button';
+import {NzToolTipModule} from 'ng-zorro-antd/tooltip';
 
 registerLocaleData(en);
 
@@ -96,7 +97,7 @@ export const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule,
     _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule, MatListModule, NzAvatarModule, NzTypographyModule,
-    NzListModule, NzProgressModule, NzSelectModule, NzInputModule, NzButtonModule
+    NzListModule, NzProgressModule, NzSelectModule, NzInputModule, NzButtonModule, NzToolTipModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]

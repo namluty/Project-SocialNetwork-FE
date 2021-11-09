@@ -30,7 +30,7 @@ export class UserAccountComponent implements OnInit {
   arrImage: Array<string> = [];
   arrIConvert: Array<string> = [];
   myMap = new Map();
-
+  isSearching = false;
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
@@ -83,7 +83,6 @@ export class UserAccountComponent implements OnInit {
   addImage($event: string) {
     this.arrImage.push($event);
     this.form.imageUrl = this.arrImage.toString();
-    console.log('arrImage --> ', this.arrImage);
   }
 
   onChangeAvatar1($event: string) {
@@ -93,6 +92,7 @@ export class UserAccountComponent implements OnInit {
   searchName(name: string) {
     this.friendService.searchByFullName(name).subscribe(data => {
       this.listUser = data;
+      this.isSearching = true;
     });
   }
 
@@ -103,5 +103,8 @@ export class UserAccountComponent implements OnInit {
   timeLine() {
     this.check = false;
   }
+  closeSearch(){
+    this.isSearching = false;
 
+  }
 }

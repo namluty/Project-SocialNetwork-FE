@@ -21,14 +21,12 @@ export class SearchComponent implements OnInit {
 
   private getListRequest() {
     this.adminService.suggestions().subscribe(data => {
-      console.log(data, 'ở đây không');
       this.users = data;
     });
   }
 
   addFriend(id: number, index: number) {
     this.friendService.sendAddFriend(id).subscribe(data => {
-      console.log(data, 'friend nhan loi moi kb');
       const i = index;
       const a1 = this.users.slice(0, i);
       const a2 = this.users.slice(i + 1, this.users.length);
