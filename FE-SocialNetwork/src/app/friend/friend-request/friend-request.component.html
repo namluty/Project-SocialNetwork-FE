@@ -1,16 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-12" style="margin-top: 20px">
-            <mat-card style="margin: 50px 0">
-                <mat-card-title align="center" class="alert alert-primary">Yêu cầu đã gửi đi KB</mat-card-title>
+            <mat-card style="margin: 0px 0">
                 <div class="row">
                     <div class="column" *ngFor="let user of users">
-                        <div class="card">
                             <i style="font-size: 1.5vw; color: crimson">{{user.fullName}}</i>
-                            <i style="font-size: 1.5vw; color: crimson">{{user.email}}</i>
-                            <img style="width: 120px; height: 120px" class="img" [src]="user.avatarUrl">
-                            <button (click)="deleteRequest(user.id)">Gỡ lời mời KB</button>
-                        </div>
+                            <nz-avatar class="w3-center w3-circle w3-margin-right" [nzSize]="110" nzIcon="user"
+                                       nzSrc="{{user.avatarUrl}}"></nz-avatar><br><br>
+                        <button (click)="deleteRequest(user.id)" nz-button nzType="primary" [nzSize]="" nzShape="round">
+                            <i nz-icon nzType="download"></i>
+                            Delete Request
+                        </button>
                     </div>
                 </div>
             </mat-card>

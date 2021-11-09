@@ -22,17 +22,14 @@ export class NotificationComponent implements OnInit {
   getNotification(){
     this.notificationService.getNotify().subscribe(data =>{
       this.notifications = data;
-      console.log(data, 'notifications')
     })
   }
 
   getPostNotification(id: number) {
     this.notificationService.getPostNotification(id).subscribe(data =>{
-      console.log(data, "post notification");
       this.checkNotify=true;
       this.post = data;
     })
-
   }
 
   check1() {

@@ -19,13 +19,11 @@ export class ListFriendComponent implements OnInit {
   getListFriend(){
     this.friendService.showListFriend().subscribe(data =>{
       this.users = data;
-      console.log(data, 'list friend')
     })
   }
 
   deleteFriend(id: number) {
     this.friendService.deleteFriend(id).subscribe(data =>{
-      console.log(data, 'delete friend');
       this.getListFriend();
     })
     

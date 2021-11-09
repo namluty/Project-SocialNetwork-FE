@@ -18,7 +18,6 @@ export class ShowAddFriendComponent implements OnInit {
 
   getListAddFriend(){
     this.friendService.showAddFriend().subscribe(data =>{
-      console.log(data);
       this.users = data;
     })
   }

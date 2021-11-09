@@ -48,5 +48,4 @@ export class ChangeAvatarComponent implements OnInit {
   onUploadAvatar($event) {
     this.form.avatarUrl = $event;
   }
-
 }

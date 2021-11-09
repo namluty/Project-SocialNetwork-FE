@@ -25,7 +25,6 @@ export class CommentComponent implements OnInit {
 
   ngComment() {
     this.commentService.createComment(this.post.id, this.commentForm.value).subscribe(data => {
-      console.log('data', data);
       this.commentForm.reset();
       this.post.commentList.unshift(data);
     },error => {console.log(error)});
@@ -44,7 +43,7 @@ export class CommentComponent implements OnInit {
         const a2 = this.post.commentList.slice(i + 1, this.post.commentList.length);
         [...this.post.commentList] = a1.concat(a2);
       }else {
-        console.log('loi');
+        console.log('Error');
       }
     },error => {console.log(error)});
   }

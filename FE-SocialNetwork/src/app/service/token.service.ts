@@ -87,6 +87,6 @@ export class TokenService {
 
   public logOut() {
     window.sessionStorage.clear();
-    window.location.reload();
+    // window.location.reload();
   }
 }

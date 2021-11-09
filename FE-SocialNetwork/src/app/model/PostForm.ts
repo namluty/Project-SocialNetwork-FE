@@ -2,6 +2,7 @@ import {User} from './User';
 import {Comments} from './comment';
 import {Like} from './Like';
 
+
 export class PostForm {
   public id ?: number;
   public content: string;

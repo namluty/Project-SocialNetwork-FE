@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../model/User';
-import {PageEvent} from '@angular/material/paginator';
 import {AdminService} from '../service/admin.service';
 import {FriendService} from '../service/friend.service';
 
@@ -11,38 +10,29 @@ import {FriendService} from '../service/friend.service';
 })
 export class SearchComponent implements OnInit {
   users: User[] = [];
-  totalElements: number = 0;
+
   constructor(private adminService: AdminService,
               private friendService: FriendService) {
   }
 
   ngOnInit(): void {
-    this.getListRequest({page: 0, size: 5});
+    this.getListRequest();
   }
 
-  private getListRequest(request) {
-    this.adminService.pageUser(request).subscribe(data => {
-      this.users = data['content'];
-      console.log(this.users,'wudgqydkjad');
-      this.totalElements = data['totalElements'];
+  private getListRequest() {
+    this.adminService.suggestions().subscribe(data => {
+      console.log(data, 'ở đây không');
+      this.users = data;
     });
   }
 
-  nextPage(event: PageEvent) {
-    const request = {};
-    request['page'] = event.pageIndex.toString();
-    request['size'] = event.pageSize.toString();
-    this.getListRequest(request);
-  }
-
-  addFriend(id: number) {
+  addFriend(id: number, index: number) {
     this.friendService.sendAddFriend(id).subscribe(data => {
       console.log(data, 'friend nhan loi moi kb');
+      const i = index;
+      const a1 = this.users.slice(0, i);
+      const a2 = this.users.slice(i + 1, this.users.length);
+      [...this.users] = a1.concat(a2);
     });
   }
-  // setFriend(id: number){
-  // this.friendService.setFriend(id).subscribe(setf =>{
-  //   console.log(setf, 'cai gi day');
-  // })
-  // }
 }

@@ -73,7 +73,6 @@ export class ChangePasswordComponent implements OnInit {
             this.status = 'Change Password success!'
           } else {
             this.isChangePassed = true;
-            console.log('xuong else')
             // alert('Mật khẩu không khớp')
           }
 

@@ -26,7 +26,5 @@ export class FriendRequestComponent implements OnInit {
       console.log(data, "friend bị thu hồi");
       this.getFriendRequest();
     })
-
-
   }
 }

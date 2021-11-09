@@ -23,7 +23,6 @@ export class AuthService {
   private API_CHANGE_PASSWORD = environment.API_LOCAL + 'change-password';
   private API_SHOW_POST_PROFILE = environment.API_LOCAL + 'showPostProfile';
 
-
   data: boolean;
 
   constructor(private http: HttpClient) {
@@ -61,7 +60,6 @@ export class AuthService {
     return this.http.get<PostForm[]>(this.API_SHOW_POST_PROFILE);
   }
 
-
   setData(data) {
     this.data = data;
   }
@@ -69,5 +67,6 @@ export class AuthService {
   getData(): boolean {
     return this.data;
   }
+
 }
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Meta Network</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -14,35 +14,42 @@
 </style>
 <body class="w3-theme-l5">
 
-<!-- Navbar -->
+Navbar
 <div class="w3-top">
     <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2"
-           href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i
-                class="fa fa-home w3-margin-right"></i>Logo</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i
+        <a (click)="timeLine()" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i
+                class="fa fa-home w3-margin-right"></i>Metabook</a>
+        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i
                 class="fa fa-globe"></i></a>
+        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i
+                class="fa fa-user"></i></a>
+        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
+                class="fa fa-envelope"></i></a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
            title="Account Settings"><i class="fa fa-user"></i></a>
         <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
                 class="fa fa-envelope"></i></a>
         <div class="w3-dropdown-hover w3-hide-small">
-            <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span
-                    class="w3-badge w3-right w3-small w3-green">3</span></button>
-            <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-                <a href="#" class="w3-bar-item w3-button">One new friend request</a>
-                <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
-                <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
-            </div>
+            <form class="d-flex">
+                <input #element style="right: 15%;width: 250px; margin-top: 8px"
+                       class="form-control me-2" type="search"
+                       placeholder="Search"
+                       aria-label="Search">
+                <button (click)="searchName(element.value)" style="margin-top: 8px; height: 36px"
+                        class="btn btn-outline-success" type="submit">Search
+                </button>
+
+                <a style="position: fixed; right: 2%;top:1%">
+                    <img [matMenuTriggerFor]="menu" src="{{avatar}}" class="w3-circle" style="height:40px;width:40px"
+                         alt="Avatar">
+                    <mat-menu #menu="matMenu">
+                        <button style="height: 30px; width: 40px" (click)="logOut()" mat-button>Log Out</button>
+                    </mat-menu>
+                </a>
+            </form>
         </div>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white"
-           title="My Account">
-            <img src="/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
-        </a>
     </div>
 </div>
-
 <!-- Navbar on small screens -->
 <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
@@ -61,7 +68,8 @@
             <div class="w3-card w3-round w3-white">
                 <div class="w3-container">
                     <br>
-                    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="90" nzIcon="user" nzSrc="{{avatar}}"></nz-avatar>
+                    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="90" nzIcon="user"
+                               nzSrc="{{avatar}}"></nz-avatar>
                     <br>
                     <h4 (click)="profile()" style="cursor: pointer; text-align: center">{{fullName}}</h4>
                     <p> {{phone}}</p>
@@ -71,8 +79,6 @@
                         <nz-list-item role="listitem" routerLink="/change-avatar">change avatar</nz-list-item>
                         <nz-list-item role="listitem" routerLink="/change-password">change password</nz-list-item>
                     </nz-list>
-
-
                 </div>
             </div>
             <br>
@@ -125,20 +131,8 @@
             <!-- Interests -->
             <div class="w3-card w3-round w3-white w3-hide-small">
                 <div class="w3-container">
-                    <p>Interests</p>
-                    <p>
-                        <span class="w3-tag w3-small w3-theme-d5">News</span>
-                        <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
-                        <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-                        <span class="w3-tag w3-small w3-theme-d2">Games</span>
-                        <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-                        <span class="w3-tag w3-small w3-theme">Games</span>
-                        <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-                        <span class="w3-tag w3-small w3-theme-l2">Food</span>
-                        <span class="w3-tag w3-small w3-theme-l3">Design</span>
-                        <span class="w3-tag w3-small w3-theme-l4">Art</span>
-                        <span class="w3-tag w3-small w3-theme-l5">Photos</span>
-                    </p>
+                    <span nz-typography nzType="danger">Account Manager</span>
+                    <app-admin-manager></app-admin-manager>
                 </div>
             </div>
             <br>
@@ -150,7 +144,6 @@
         </span>
                 <p><strong>Hey!</strong></p>
                 <p>People are looking at your profile. Find out who.</p>
-                <app-notification></app-notification>
             </div>
 
             <!-- End Left Column -->
@@ -163,7 +156,6 @@
                 <div class="w3-col m12">
                     <div class="w3-card w3-round w3-white">
                         <div class="w3-container w3-padding">
-
                             <form class="" #f="ngForm" (ngSubmit)="f.form.valid && ngPost()" novalidate>
                                 <!-- CONTENT -->
                                 <mat-form-field style="width: 80%" appearance="outline">
@@ -171,7 +163,8 @@
                                            placeholder="Bạn đang nghĩ gì?"><br>
                                     <app-upload-avatar (giveURLtoCreate)="addImage($event)"></app-upload-avatar>
                                 </mat-form-field>
-                                <nz-select name="status" ngModel="lucy" [(ngModel)]="form.status" nzAllowClear nzPlaceHolder="Choose">
+                                <nz-select name="status" ngModel="lucy" [(ngModel)]="form.status" nzAllowClear
+                                           nzPlaceHolder="Choose">
                                     <nz-option nzValue="public" nzLabel="Public"></nz-option>
                                     <nz-option nzValue="friend" nzLabel="Friend"></nz-option>
                                     <nz-option nzValue="onlyme" nzLabel="Onlyme"></nz-option>
@@ -193,10 +186,12 @@
             <div *ngIf="!check">
                 <div *ngFor="let post of listPost; let p = index"
                      class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="64" nzIcon="user" nzSrc="{{post.user.avatarUrl}}"></nz-avatar>
+                    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="64" nzIcon="user"
+                               nzSrc="{{post.user.avatarUrl}}"></nz-avatar>
                     <h5 nz-typography>
                         {{post.user.fullName}}
-                        <small nz-typography nzType="secondary" class="w3-right w3-opacity">{{post.created_date}}</small>
+                        <small nz-typography nzType="secondary"
+                               class="w3-right w3-opacity">{{post.created_date}}</small>
                     </h5>
                     <small nz-typography nzType="secondary">{{post.status}}</small>
                     <hr class="w3-clear">
@@ -208,6 +203,7 @@
                             </div>
                         </div>
                     </div>
+
                     <hr class="w3-clear">
 
                     <div class="w3-row-padding" style="margin:0 -16px">
@@ -226,39 +222,82 @@
         <div class="w3-col m2">
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
-                    <!--                    <app-search></app-search>-->
+                    <span nz-typography nzType="danger">Notification</span>
+                    <app-notification></app-notification>
                 </div>
             </div>
             <br>
-
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
-                    <p>Friend Request</p>
-                    <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-                    <span>Jane Doe</span>
-                    <div class="w3-row w3-opacity">
-                        <div class="w3-half">
-                            <!--                            Đồng ý hoặc từ chối kết bạn-->
-                            <app-show-add-friend></app-show-add-friend>
-                        </div>
-                    </div>
+                    <span nz-typography nzType="danger">Friends Request</span>
+                    <app-show-add-friend></app-show-add-friend>
+<!--                    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="80" nzIcon="user"-->
+<!--                               nzSrc="{{avatar}}"></nz-avatar>-->
+<!--                    <h5 nz-typography>-->
+<!--                        {{fullName}}</h5>-->
+<!--                    <div class="w3-row w3-opacity">-->
+<!--                        <div class="w3-half">-->
+<!--                            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i-->
+<!--                                    class="fa fa-check"></i></button>-->
+<!--                        </div>-->
+<!--                        <div class="w3-half">-->
+<!--                            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i-->
+<!--                                    class="fa fa-remove"></i></button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
                 </div>
             </div>
             <br>
+            <!--            =======-->
+            <!--            &lt;!&ndash; Right Column &ndash;&gt;-->
+            <!--            <div class="w3-col m2">-->
+            <!--                <div class="w3-card w3-round w3-white w3-center">-->
+            <!--                    <div class="w3-container">-->
+            <!--                        <p>Upcoming Events:</p>-->
+            <!--                        <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">-->
+            <!--                        <p><strong>Holiday</strong></p>-->
+            <!--                        <p>Friday 15:00</p>-->
+            <!--                        <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <br>-->
+
+            <!--                <div class="w3-card w3-round w3-white w3-center">-->
+            <!--                    <div class="w3-container">-->
+            <!--                        <p>Friend Request</p>-->
+            <!--                        <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>-->
+            <!--                        <span>Jane Doe</span>-->
+            <!--                        <div class="w3-row w3-opacity">-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>-->
+            <!--                            </div>-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <br>-->
+            <!--            -->
+            <!--            =======-->
             <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
                 <!--                Gỡ lại yêu cầu KB-->
+                <span nz-typography nzType="success">Pending Add Friend</span>
                 <app-friend-request></app-friend-request>
 
             </div>
             <br>
             <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
                 <!--                Tìm bạn-->
+                <span nz-typography nzType="danger">Friend Suggestion</span>
                 <app-search></app-search>
 
             </div>
             <br>
             <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-<!--                List bạn-->
+                <!--                List bạn-->
+                <span nz-typography nzType="danger"> Your Friends List</span>
                 <app-list-friend></app-list-friend>
 
             </div>
@@ -286,30 +325,30 @@
 <footer class="w3-container w3-theme-d5">
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
-<script>
-    // Accordion
-    function myFunction(id) {
-        var x = document.getElementById(id);
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-            x.previousElementSibling.className += " w3-theme-d1";
-        } else {
-            x.className = x.className.replace("w3-show", "");
-            x.previousElementSibling.className =
-                x.previousElementSibling.className.replace(" w3-theme-d1", "");
-        }
-    }
+<!--<script>-->
+<!--    // Accordion-->
+<!--    function myFunction(id) {-->
+<!--        let x = document.getElementById(id);-->
+<!--        if (x.className.indexOf("w3-show") == -1) {-->
+<!--            x.className += " w3-show";-->
+<!--            x.previousElementSibling.className += " w3-theme-d1";-->
+<!--        } else {-->
+<!--            x.className = x.className.replace("w3-show", "");-->
+<!--            x.previousElementSibling.className =-->
+<!--                x.previousElementSibling.className.replace(" w3-theme-d1", "");-->
+<!--        }-->
+<!--    }-->
 
-    // Used to toggle the menu on smaller screens when clicking on the menu button
-    function openNav() {
-        var x = document.getElementById("navDemo");
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-        } else {
-            x.className = x.className.replace(" w3-show", "");
-        }
-    }
-</script>
+<!--    // Used to toggle the menu on smaller screens when clicking on the menu button-->
+<!--    function openNav() {-->
+<!--        let x = document.getElementById("navDemo");-->
+<!--        if (x.className.indexOf("w3-show") == -1) {-->
+<!--            x.className += " w3-show";-->
+<!--        } else {-->
+<!--            x.className = x.className.replace(" w3-show", "");-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
 
 </body>
 </html>

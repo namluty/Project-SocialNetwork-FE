@@ -22,14 +22,12 @@ export class LikeComponent implements OnInit {
   ngLike(){
     console.log(this.post.id);
     this.likeService.createLike(this.post.id).subscribe(data =>{
-      console.log(data, 'like');
       this.sumLike();
     })
   }
 
   sumLike(){
     this.likeService.sumLike(this.post.id).subscribe(data =>{
-      console.log(data, 'sumLike');
       this.likes = data;
     })
   }

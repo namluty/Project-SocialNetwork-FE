@@ -34,10 +34,7 @@ export class LoginComponent implements OnInit {
       this.form.username,
       this.form.password
     )
-    console.log('signInForm --> ',this.signInForm);
-    console.log(this.signInForm);
     this.authService.signin(this.signInForm).subscribe(data => {
-      console.log(data);
       if (data.message == 'user_was_blocked') {
         alert("Account is Blocked!!!")
       } else {
@@ -49,11 +46,7 @@ export class LoginComponent implements OnInit {
           this.tokenService.setPhone(data.phone);
           this.tokenService.setEmail(data.email);
           this.tokenService.setIsActive(data.isActive);
-          // this.router.navigate(['user-account']).then(() => {
-          // });
-          console.log('xuong duoc day khong');
           this.router.navigate(['user-account'])
-
         }
       }
     },error => console.log(error));

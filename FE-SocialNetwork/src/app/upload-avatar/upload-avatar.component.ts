@@ -31,7 +31,6 @@ export class UploadAvatarComponent implements OnInit {
       this.onUpload(files[0]);
     } else {
       for (const file of files) {
-        console.log(file);
         this.onUpload(file);
       }
     }

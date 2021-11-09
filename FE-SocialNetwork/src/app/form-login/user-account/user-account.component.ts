@@ -6,8 +6,6 @@ import {AuthService} from '../../service/auth.service';
 import {FriendService} from '../../service/friend.service';
 import {User} from '../../model/User';
 import {Comments} from '../../model/comment';
-import {CommentService} from '../../service/comment.service';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 
 
 @Component({
@@ -36,7 +34,8 @@ export class UserAccountComponent implements OnInit {
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
-              private friendService: FriendService) {
+              private friendService: FriendService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -56,37 +55,21 @@ export class UserAccountComponent implements OnInit {
     });
   };
 
-  // changeAvatar() {
-  //   window.sessionStorage.clear();
-  //   this.router.navigate(['change-avatar']).then(() => {
-  //   });
-  // };
-
   getListPost() {
     this.postService.showListPost().subscribe(data => {
       this.listPost = data;
-      console.log('data list --> ', data);
+      console.log('data --> ', data);
       for (let i = 0; i < data.length; i++) {
-        console.log('i = ', i);
-        console.log('lay anh ->', data[i].imageUrl);
         this.arrIConvert = [];
         this.arrIConvert = data[i].imageUrl.split(',');
-        console.log('arrIConvert --> ', this.arrIConvert);
         this.myMap.set(i, this.arrIConvert);
       }
-
-
     });
   }
 
   ngPost() {
-    this.post = new PostForm(
-      this.form.content,
-      this.form.status,
-      this.form.imageUrl
-    );
+    this.post = new PostForm(this.form.content, this.form.status, this.form.imageUrl);
     this.postService.createPost(this.post).subscribe(data => {
-      console.log('data', data);
       this.form = {
         content: null,
         status: 'public',
@@ -94,16 +77,13 @@ export class UserAccountComponent implements OnInit {
       };
       this.arrImage = [];
       this.getListPost();
-      // window.location.reload();
     });
   }
 
   addImage($event: string) {
-    // this.form.imageUrl = $event;
     this.arrImage.push($event);
-    console.log('arrImage - ', this.arrImage);
-    console.log('toString -> ', this.arrImage.toString());
     this.form.imageUrl = this.arrImage.toString();
+    console.log('arrImage --> ', this.arrImage);
   }
 
   onChangeAvatar1($event: string) {
@@ -123,4 +103,5 @@ export class UserAccountComponent implements OnInit {
   timeLine() {
     this.check = false;
   }
+
 }
