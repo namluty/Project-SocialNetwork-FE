@@ -67,6 +67,7 @@ import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzDrawerModule} from 'ng-zorro-antd/drawer';
 import { ChatComponent } from './chat/chat.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import {CanActiveGuard} from './security/can-active.guard';
 
 registerLocaleData(en);
 
@@ -74,15 +75,16 @@ export const appRoutes: Routes = [
   {path: '', component: HomeComponent, data: {title: 'Home'}},
   {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
-  {path: 'notify', component: NotificationComponent, data: {title: 'Notify'}},
-  {path: 'user-account', component: UserAccountComponent},
-  {path: 'upload-avatar', component: UploadFileComponent},
-  {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}},
-  {path: 'change-profile', component: ChangeProfileComponent},
-  {path: 'change-avatar', component: ChangeAvatarComponent},
-  {path: 'change-password', component:ChangePasswordComponent},
-  {path: 'user-profile', component:ProfileComponent},
-  {path: 'chat', component:ChatComponent},
+  {path: 'notify', component: NotificationComponent, canActivate: [CanActiveGuard], data: {title: 'Notify'}},
+  {path: 'user-account', component: UserAccountComponent, canActivate: [CanActiveGuard]},
+  {path: 'upload-avatar', component: UploadFileComponent, canActivate: [CanActiveGuard]},
+  {path: "change-role/:id", component: AdminManagerComponent, canActivate: [CanActiveGuard], data: {title: 'Change-Role'}},
+  {path: 'change-profile', component: ChangeProfileComponent, canActivate: [CanActiveGuard]},
+  {path: 'change-avatar', component: ChangeAvatarComponent, canActivate: [CanActiveGuard]},
+  {path: 'change-password', component:ChangePasswordComponent, canActivate: [CanActiveGuard]},
+  {path: 'user-profile', component:ProfileComponent, canActivate: [CanActiveGuard]},
+  {path: 'chat', component:ChatComponent,
+  canActivate: [CanActiveGuard]},
 
 ];
 
