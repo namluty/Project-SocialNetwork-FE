@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+<!--            <mat-card style="margin: 50px 0">-->
+<!--                <mat-card-title align="center" class="alert alert-primary"></mat-card-title>-->
+                <div class="row">
+                    <div class="column" *ngFor="let user of users">
+<!--                        <div class="card">-->
+                            <i style="font-size: 1.5vw; color: crimson">{{user.fullName}}</i><br>
+                            <img style="width: 120px; height: 120px" class="img" [src]="user.avatarUrl">
+                            <button (click)="addFriend(user.id)" class="w3-button w3-block w3-green w3-section"
+                                    title="Accept"><i class="fa fa-check"></i>Add
+                            </button>
+                            <button (click)="refuse(user.id)" class="w3-button w3-block w3-red w3-section"
+                                    title="Decline"><i class="fa fa-remove"></i>Decline
+                            </button>
+                        </div>
+                    </div>
+                </div>
+<!--            </mat-card>-->
+        </div>
+    </div>
+<!--</div>-->
+
+

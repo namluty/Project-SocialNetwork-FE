@@ -1,0 +1,21 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 0px 0">
+                <div class="row">
+                    <div class="column" *ngFor="let user of users index as i">
+                        <i style="font-size: 1.5vw; color: crimson">{{user.fullName}}</i>
+                        <nz-avatar class="w3-center w3-circle w3-margin-right" [nzSize]="110" nzIcon="user"
+                                   nzSrc="{{user.avatarUrl}}"></nz-avatar><br><br>
+                        <button (click)="addFriend(user.id, i)" nz-button nzType="danger" [nzSize]="" nzShape="round">
+                            <i nz-icon nzType="download"></i>
+                            Add Friend
+                        </button>
+                        <hr>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

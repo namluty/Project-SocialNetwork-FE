@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 5px">
+            <mat-card style="margin: 0px 0; text-align: center">
+                <div class="row">
+                    <div class="column" *ngFor="let notification of notifications">
+                        <div class="card">
+                            <a (click)="getPostNotification(notification.postId)">{{notification.notify}}</a>
+                        </div>
+                    </div>
+                    <div *ngIf="checkNotify">
+                        <span nz-tooltip nzTooltipTitle="{{post.content}}">Content: </span><br>
+                        <span nz-tooltip nzTooltipTitle="{{post.likeList.length}}">Like: </span><br>
+                        <span nz-tooltip nzTooltipTitle="{{post.commentList.length}}">Comment: </span>
+                        <hr>
+                        <p>Content: {{post.content}}</p>
+                        <p>{{post.likeList.length}} Like:</p>
+                        <p>{{post.commentList.length}} Comment:</p>
+                        <a (click)="check1()">Hiden Post</a>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+<!--<button nz-button nzType="primary" (click)="open()">Open</button>-->
+<!--<nz-drawer-->
+<!--        [nzClosable]="false"-->
+<!--        [nzVisible]="visible"-->
+<!--        nzPlacement="right"-->
+<!--        nzTitle="Basic Drawer"-->
+<!--        (nzOnClose)="close()"-->
+<!--&gt;-->
+<!--    <ng-container *nzDrawerContent>-->
+<!--        <p>Some contents...</p>-->
+<!--        <p>Some contents...</p>-->
+<!--        <p>Some contents...</p>-->
+<!--    </ng-container>-->
+<!--</nz-drawer>-->

@@ -1,0 +1,8 @@
+<div>
+        <mat-icon  nz-tooltip [nzTooltipTitle]="isLiked ? 'like' : 'dislike'" color="accent" (click)="ngLike()" matSuffix>{{isLiked ? 'thumb_up' : 'thumb_down'}}</mat-icon>{{likes.length}}
+        <mat-icon color="accent" matSuffix>chat_bubble</mat-icon>
+        <app-comment [post]="post"></app-comment>
+</div>
+
+
+

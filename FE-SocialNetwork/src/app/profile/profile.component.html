@@ -1,0 +1,21 @@
+<div *ngFor="let post of listPost, index as i" class="w3-container w3-card w3-white w3-round w3-margin"><br>
+    <button (click)="deletePosts(i,post.id)">Click Tao</button>
+    <i nz-icon nzType="delete" nzTheme="outline"></i>
+    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="80" nzIcon="user"
+               nzSrc="{{post.user.avatarUrl}}"></nz-avatar>
+    <h5 nz-typography>
+        {{post.user.fullName}}
+        <small nz-typography nzType="secondary" class="w3-right w3-opacity">{{post.created_date}}</small>
+    </h5>
+    <small nz-typography nzType="secondary">{{post.status}}</small>
+    <hr class="w3-clear">
+    <p>{{post.content}}</p>
+        <div class="row">
+            <div class="column" *ngFor="let img of myMap.get(i)">
+                <div class="card">
+                    <img style="height: 150px; width:auto" class="img" src="{{img}}">
+                </div>
+            </div>
+        </div>
+    <app-like [post]="post"></app-like>
+</div>

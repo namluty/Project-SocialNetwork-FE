@@ -1,0 +1,14 @@
+<div>
+    <input type="file" multiple (change)="onFileChanged($event)">
+    <nz-progress *ngIf="checkUploadAvatar" [nzPercent]="0.01" [nzStrokeColor]="{ '0%': '#ab60ce', '100%': '#cb1c90' }"></nz-progress>
+    <div class="row">
+        <div class="column" *ngFor="let song of listIMG; let a = index">
+            <div class="card">
+                <img class="img" [src]="myMap.get(a)">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

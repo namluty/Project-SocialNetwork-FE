@@ -7,7 +7,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngx-audio-player-demo';
+  title = 'meta-network';
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 

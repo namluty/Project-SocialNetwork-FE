@@ -1,0 +1,28 @@
+<div class="w3-container w3-padding" xmlns="http://www.w3.org/1999/html">
+    <form class="" [formGroup]="commentForm" (ngSubmit)="ngComment()" novalidate>
+        <!-- CONTENT -->
+        <mat-form-field style="width: 80%" appearance="outline">
+            <input name="content" formControlName="content" matInput
+                   placeholder="Enter a comment...">
+        </mat-form-field>
+        <button mat-stroked-button color="accent" type="submit"
+                class="mat-button-toggle-group btn-outline-primary">&ensp;Comment
+        </button>
+    </form>
+</div>
+<div class="column" *ngFor="let comments of post.commentList; index as i">
+    <div class="card">
+        <div><strong>{{comments.user.fullName}}</strong> : <span *ngIf="!comments.check">{{comments.content}}</span>
+            <input nz-input style="width: 100%" *ngIf="comments.check" type="text" [(ngModel)]="comments.content"
+                   (keydown.enter)="submitComment(comments)">
+        </div>
+        <button mat-button [matMenuTriggerFor]="menu2">Menu</button>
+        <mat-menu #menu2="matMenu">
+            <button (click)="editComment(comments)" mat-menu-item>Edit</button>
+            <button (click)="deleteComment(comments, i)" mat-menu-item>Delete</button>
+        </mat-menu>
+
+<!--        <button (click)="editComment(comments)">sua cmt</button>-->
+<!--        <button (click)="deleteComment(comments, i)">xóa comment</button>-->
+    </div>
+</div>

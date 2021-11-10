@@ -3,7 +3,6 @@ import {FormControl, Validators} from '@angular/forms';
 import {SignUpForm} from '../../model/SignUpForm';
 import {AuthService} from '../../service/auth.service';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
