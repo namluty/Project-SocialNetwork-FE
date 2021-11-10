@@ -10,6 +10,7 @@
         </button>
     </form>
 </div>
+<div>{{post.commentList.length}}</div>
 <div class="column" *ngFor="let comments of post.commentList; index as i" >
     <div class="card">
         <div><strong>{{comments.user.fullName}}</strong> : <span *ngIf="!comments.check">{{comments.content}}</span>
@@ -19,3 +20,4 @@
         <button (click)="deleteComment(comments, i)">xóa comment</button>
     </div>
 </div>
+

@@ -10,7 +10,7 @@ import {Like} from '../model/Like';
 })
 export class LikeComponent implements OnInit {
   @Input() post: PostForm;
-  likes: Like[]=[];
+  likes: Like[] = [];
   constructor(private likeService: LikeService) { }
 
   ngOnInit(): void {

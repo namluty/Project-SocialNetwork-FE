@@ -17,23 +17,23 @@ export class ShowAddFriendComponent implements OnInit {
   }
 
   getListAddFriend(){
-    this.friendService.showAddFriend().subscribe(data =>{
+    this.friendService.showAddFriend().subscribe(data => {
       console.log(data);
       this.users = data;
-    })
+    });
   }
 
   addFriend(id: number) {
-    this.friendService.confirm(id).subscribe(data =>{
+    this.friendService.confirm(id).subscribe(data => {
       console.log(data);
       this.getListAddFriend();
-    })
+    });
   }
 
   refuse(id: number){
-    this.friendService.refuse(id).subscribe(data =>{
-      console.log(data, 'refuse')
+    this.friendService.refuse(id).subscribe(data => {
+      console.log(data, 'refuse');
       this.getListAddFriend();
-    })
+    });
   }
 }

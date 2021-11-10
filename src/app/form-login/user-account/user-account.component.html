@@ -23,8 +23,15 @@
                 class="fa fa-globe"></i></a>
         <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i
                 class="fa fa-user"></i></a>
-        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
+        <a routerLink="/chat" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
                 class="fa fa-envelope"></i></a>
+        <br>
+        <br>
+        <p>
+            <mat-icon routerLink="/chat" matBadge="{{chat.img}}" matBadgeColor="warn">message</mat-icon>
+            <span class="cdk-visually-hidden">
+    </span>
+        </p>
         <form class="d-flex">
             <input #element style="right: 15%;width: 250px; margin-top: 8px"
                    class="form-control me-2" type="search"
@@ -74,69 +81,69 @@
             <br>
 
             <!-- Accordion -->
-            <!--            <div class="w3-card w3-round">-->
-            <!--                <div class="w3-white">-->
-            <!--                    <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
-            <!--                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups-->
-            <!--                    </button>-->
-            <!--                    <div id="Demo1" class="w3-hide w3-container">-->
-            <!--                        <p>Some text..</p>-->
-            <!--                    </div>-->
-            <!--                    <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
-            <!--                            class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events-->
-            <!--                    </button>-->
-            <!--                    <div id="Demo2" class="w3-hide w3-container">-->
-            <!--                        <p>Some other text..</p>-->
-            <!--                    </div>-->
-            <!--                    <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
-            <!--                            class="fa fa-users fa-fw w3-margin-right"></i> My Photos-->
-            <!--                    </button>-->
-            <!--                    <div id="Demo3" class="w3-hide w3-container">-->
-            <!--                        <div class="w3-row-padding">-->
-            <!--                            <br>-->
-            <!--                            <div class="w3-half">-->
-            <!--                                <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">-->
-            <!--                            </div>-->
-            <!--                            <div class="w3-half">-->
-            <!--                                <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">-->
-            <!--                            </div>-->
-            <!--                            <div class="w3-half">-->
-            <!--                                <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">-->
-            <!--                            </div>-->
-            <!--                            <div class="w3-half">-->
-            <!--                                <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">-->
-            <!--                            </div>-->
-            <!--                            <div class="w3-half">-->
-            <!--                                <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">-->
-            <!--                            </div>-->
-            <!--                            <div class="w3-half">-->
-            <!--                                <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--            </div>-->
-            <!--            <br>-->
+                        <div class="w3-card w3-round">
+                            <div class="w3-white">
+                                <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i
+                                        class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups
+                                </button>
+                                <div id="Demo1" class="w3-hide w3-container">
+                                    <p>Some text..</p>
+                                </div>
+                                <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i
+                                        class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events
+                                </button>
+                                <div id="Demo2" class="w3-hide w3-container">
+                                    <p>Some other text..</p>
+                                </div>
+                                <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i
+                                        class="fa fa-users fa-fw w3-margin-right"></i> My Photos
+                                </button>
+                                <div id="Demo3" class="w3-hide w3-container">
+                                    <div class="w3-row-padding">
+                                        <br>
+                                        <div class="w3-half">
+                                            <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">
+                                        </div>
+                                        <div class="w3-half">
+                                            <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">
+                                        </div>
+                                        <div class="w3-half">
+                                            <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">
+                                        </div>
+                                        <div class="w3-half">
+                                            <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">
+                                        </div>
+                                        <div class="w3-half">
+                                            <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">
+                                        </div>
+                                        <div class="w3-half">
+                                            <img src="{{avatar}}" style="width:100%" class="w3-margin-bottom">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
             <!-- Interests -->
-            <!--            <div class="w3-card w3-round w3-white w3-hide-small">-->
-            <!--                <div class="w3-container">-->
-            <!--                    <p>Interests</p>-->
-            <!--                    <p>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-d5">News</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-d3">Labels</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-d2">Games</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-d1">Friends</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme">Games</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-l1">Friends</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-l2">Food</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-l3">Design</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-l4">Art</span>-->
-            <!--                        <span class="w3-tag w3-small w3-theme-l5">Photos</span>-->
-            <!--                    </p>-->
-            <!--                </div>-->
-            <!--            </div>-->
-            <!--            <br>-->
+                        <div class="w3-card w3-round w3-white w3-hide-small">
+                            <div class="w3-container">
+                                <p>Interests</p>
+                                <p>
+                                    <span class="w3-tag w3-small w3-theme-d5">News</span>
+                                    <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
+                                    <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+                                    <span class="w3-tag w3-small w3-theme-d2">Games</span>
+                                    <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+                                    <span class="w3-tag w3-small w3-theme">Games</span>
+                                    <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+                                    <span class="w3-tag w3-small w3-theme-l2">Food</span>
+                                    <span class="w3-tag w3-small w3-theme-l3">Design</span>
+                                    <span class="w3-tag w3-small w3-theme-l4">Art</span>
+                                    <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+                                </p>
+                            </div>
+                        </div>
+                        <br>
 
             <!-- Alert Box -->
             <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
@@ -204,7 +211,7 @@
                     <p>{{post.user.fullName}}</p>
                     <img src="{{post.user.avatarUrl}}" alt="Avatar" class="w3-left w3-circle w3-margin-right"
                          style="width:60px">
-                    <span class="w3-right w3-opacity">1 min</span>
+                    <span class="w3-right w3-opacity">{{post.created_date}}</span>
                     <h4>{{post.status}}</h4><br>
                     <hr class="w3-clear">
                     <p>{{post.content}}</p>
@@ -276,14 +283,14 @@
 <!--            &lt;!&ndash; End Right Column &ndash;&gt;-->
 <!--        </div>-->
 
-<!--        &lt;!&ndash; End Grid &ndash;&gt;-->
-<!--    </div>-->
+        <!-- End Grid -->
 
-<!--    &lt;!&ndash; End Page Container &ndash;&gt;-->
-<!--</div>-->
-<!--<br>-->
 
-<!--&lt;!&ndash; Footer &ndash;&gt;-->
+    <!-- End Page Container -->
+
+<br>
+
+<!-- Footer -->
 <!--<footer class="w3-container w3-theme-d3 w3-padding-16">-->
 <!--    <h5>Footer</h5>-->
 <!--</footer>-->

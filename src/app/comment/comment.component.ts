@@ -12,10 +12,10 @@ import {PostForm} from '../model/PostForm';
 })
 export class CommentComponent implements OnInit {
   commentForm: FormGroup;
-  comments : Comments[] =[];
+  comments: Comments[] = [];
   @Input() post: PostForm;
   constructor(private fb: FormBuilder,
-              private commentService : CommentService) { }
+              private commentService: CommentService) { }
 
   ngOnInit(): void {
     this.commentForm = this.fb.group({
@@ -33,16 +33,20 @@ export class CommentComponent implements OnInit {
 
 
   editComment(comments: Comments) {
-    comments.check =true;
+    comments.check = true;
   }
 
   deleteComment(comments: Comments, index: number){
     this.commentService.deleteComment(comments.id).subscribe(data =>{
       if(data.code === '200'){
         console.log(data, 'deleteComment');
-        this.post.commentList.splice(index);
+        // this.post.commentList.splice(index);
+        const i = index;
+        const a1 = this.post.commentList.slice(0, i);
+        const a2 = this.post.commentList.slice(i + 1, this.post.commentList.length);
+        [...this.post.commentList] = a1.concat(a2);
       }else {
-        console.log('loi');
+       alert("comment của ông à?");
       }
     },error => {console.log(error)});
   }

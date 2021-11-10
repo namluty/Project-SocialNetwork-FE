@@ -9,14 +9,14 @@ import {PageEvent} from '@angular/material/paginator';
   styleUrls: ['./admin-manager.component.scss']
 })
 export class AdminManagerComponent implements OnInit {
-   totalElements : number =0;
-   users : User[] = [];
-   loading : boolean;
+   totalElements = 0;
+   users: User[] = [];
+   loading: boolean;
 
-  constructor(private adminService : AdminService) { }
+  constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
-    this.getListRequest({page:0, size:1000})
+    this.getListRequest({page: 0, size: 1000});
   }
 
   private getListRequest(request) {
@@ -25,6 +25,7 @@ export class AdminManagerComponent implements OnInit {
       this.users = data['content'];
       this.totalElements = data['totalElements'];
       this.loading = false;
+      console.log(data,"goiwj ys keets banj");
     }, error => {
       this.loading = false;
     });
@@ -37,10 +38,11 @@ export class AdminManagerComponent implements OnInit {
     this.getListRequest(request);
   }
 
-  blockUser(id: number){
-    this.adminService.changeRoleUser(id).subscribe(data =>{
-    })
-    this.getListRequest({page:0, size:1000});
+  blockUser(index: number){
+    const user: User = this.users[index];
+    this.adminService.changeRoleUser(user.id).subscribe(data => {
+      this.users[index].isActive = !this.users[index].isActive;
+    });
   }
 
   // deleteUser(id: number) {
