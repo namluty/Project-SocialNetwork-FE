@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="column" *ngFor="let user of users">
                         <div class="card">
-                            <i style="font-size: 1.5vw; color: crimson">{{user.fullName}}</i>
+                            <a (click)="showProfileFriend(user.id)" style="font-size: 1.5vw; color: crimson">{{user.fullName}}</a>
                             <i style="font-size: 1.5vw; color: crimson">{{user.email}}</i>
                             <img style="width: 120px; height: 120px" class="img" [src]="user.avatarUrl">
                             <button (click)="deleteFriend(user.id)">delete</button>

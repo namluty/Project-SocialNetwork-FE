@@ -8,6 +8,7 @@ import {User} from '../../model/User';
 import {Comments} from '../../model/comment';
 import {CommentService} from '../../service/comment.service';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Chat} from '../../model/chat';
 
 
 @Component({
@@ -17,6 +18,7 @@ import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 })
 export class UserAccountComponent implements OnInit {
   check = false;
+  hidden = false;
   formComment: any ={}
   comment: Comments;
   form: any = {status: 'public'};
@@ -29,6 +31,7 @@ export class UserAccountComponent implements OnInit {
   admin: any = ['ADMIN'];
   listUser: User[] = [];
   listPost: PostForm[] = [];
+  chat: Chat;
 
 
   constructor(private tokenService: TokenService,
@@ -45,6 +48,7 @@ export class UserAccountComponent implements OnInit {
     this.avatar = this.tokenService.getAvatarUrl();
     if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(this.admin)) {
     this.isCheckAdmin = true;
+    this.getMess();
     }
   }
 
@@ -60,13 +64,6 @@ export class UserAccountComponent implements OnInit {
     });
   }
 
-
-
-  // addPost() {
-  //   this.getListPost();
-  // }
-
-
   ngPost() {
     this.post = new PostForm(
       this.form.content,
@@ -76,6 +73,7 @@ export class UserAccountComponent implements OnInit {
     this.postService.createPost(this.post).subscribe(data => {
       console.log('data', data);
       this.form.content = '';
+      this.getListPost();
     });
   }
 
@@ -99,5 +97,15 @@ export class UserAccountComponent implements OnInit {
 
   timeLine() {
     this.check = false;
+  }
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+
+  getMess(){
+    this.postService.getMess().subscribe(data => {
+      console.log(data, 'get mess');
+      this.chat = data;
+    });
   }
 }

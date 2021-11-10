@@ -4,8 +4,8 @@
             <mat-card style="margin: 50px 0">
                 <mat-card-title align="center" class="alert alert-primary">ADMIN MANAGE</mat-card-title>
                 <div class="row">
-                    <div class="column" *ngFor="let user of users">
-                        <button (click)="blockUser(user.id)" mat-icon-button color="primary">
+                    <div class="column" *ngFor="let user of users; index as i" >
+                        <button (click)="blockUser(i)" mat-icon-button color="primary">
                             <mat-icon>block</mat-icon>Block/Unblock
                         </button>
                         <div class="card">

@@ -52,6 +52,10 @@ import { ListFriendComponent } from './friend/list-friend/list-friend.component'
 import { ProfileComponent } from './profile/profile.component';
 import { FriendRequestComponent } from './friend/friend-request/friend-request.component';
 import { NotificationComponent } from './notification/notification.component';
+import { ProfileFriendComponent } from './friend/profile-friend/profile-friend.component';
+import { ChatComponent } from './chat/chat.component';
+import { TestComponent } from './test/test.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 registerLocaleData(en);
 
@@ -61,15 +65,17 @@ export const appRoutes: Routes = [
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
   {path: 'user-account', component: UserAccountComponent},
   {path: 'upload-avatar', component: UploadFileComponent},
-  {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}},
+  {path: 'change-role/:id', component: AdminManagerComponent, data: {title: 'Change-Role'}},
   {path: 'change-profile', component: ChangeProfileComponent},
   {path: 'change-avatar', component: ChangeAvatarComponent},
-  {path: 'change-password', component:ChangePasswordComponent}
+  {path: 'change-password', component: ChangePasswordComponent},
+  {path: 'profile-friend', component: ProfileFriendComponent},
+  {path: 'chat', component: ChatComponent}
 ];
 
 @NgModule({
   declarations: [CommentComponent, AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
-    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent],
+    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent, ProfileFriendComponent, ChatComponent, TestComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -83,6 +89,7 @@ export const appRoutes: Routes = [
     MatRadioModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    MatBadgeModule,
     MatButtonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule,

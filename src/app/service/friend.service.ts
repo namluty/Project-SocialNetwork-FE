@@ -4,6 +4,7 @@ import {environment} from '../../environments/environment.prod';
 import {Observable} from 'rxjs';
 import {User} from '../model/User';
 import {Friend} from '../model/Friend';
+import {PostForm} from '../model/PostForm';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,10 @@ export class FriendService {
   private API_CONFIRM = environment.API_LOCAL + 'confirmfriend';
   private API_REFUSE = environment.API_LOCAL + 'refuse';
   private API_LIST_FRIEND = environment.API_LOCAL + 'showfriend';
-  private API_DELETE_FRIEND =environment.API_LOCAL + 'deleteFriend';
-  private API_FRIEND_REQUEST =environment.API_LOCAL + 'showFriendRequest';
-  private API_DELETE_REQUEST =environment.API_LOCAL + 'deleteRequest';
+  private API_DELETE_FRIEND = environment.API_LOCAL + 'deleteFriend';
+  private API_FRIEND_REQUEST = environment.API_LOCAL + 'showFriendRequest';
+  private API_DELETE_REQUEST = environment.API_LOCAL + 'deleteRequest';
+  private API_PROFILE_FRIEND = environment.API_LOCAL + 'showPostUser';
 
   constructor(private http: HttpClient) {
   }
@@ -52,15 +54,19 @@ export class FriendService {
   }
 
   deleteFriend(id: number): Observable<any>{
-    return this.http.delete<any>(this.API_DELETE_FRIEND + '/' +id);
+    return this.http.delete<any>(this.API_DELETE_FRIEND + '/' + id);
   }
 
   showFriendRequest(): Observable<any>{
     return this.http.get<any>(this.API_FRIEND_REQUEST);
   }
 
-  deleteRequest(id:number): Observable<Friend>{
-    return this.http.delete<Friend>(this.API_DELETE_REQUEST +'/' + id);
+  deleteRequest(id: number): Observable<Friend>{
+    return this.http.delete<Friend>(this.API_DELETE_REQUEST + '/' + id);
+  }
+
+  getProfileFriend(id: number): Observable<PostForm[]>{
+    return this.http.get<PostForm[]>( this.API_PROFILE_FRIEND + '/' + id);
   }
 
 }
