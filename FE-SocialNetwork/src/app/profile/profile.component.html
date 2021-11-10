@@ -2,7 +2,7 @@
     <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">
     <mat-icon (click)="deletePosts(i,post.id)" color="accent" matSuffix>delete_outline</mat-icon>
     </a>
-    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="80" nzIcon="user"
+    <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="64" nzIcon="user"
                nzSrc="{{post.user.avatarUrl}}"></nz-avatar>
     <h5 nz-typography>
         {{post.user.fullName}}
@@ -11,19 +11,12 @@
     <small nz-typography nzType="secondary">{{post.status}}</small>
     <hr class="w3-clear">
     <p>{{post.content}}</p>
-    <div class="w3-row-padding" style="margin:0 -16px">
-        <div class="w3-half">
-            <img src="{{post.imageUrl}}" style="width:100%"
-                 class="w3-margin-bottom">
+        <div class="row">
+            <div class="column" *ngFor="let img of myMap.get(i)">
+                <div class="card">
+                    <img style="height: 150px; width:auto" class="img" src="{{img}}">
+                </div>
+            </div>
         </div>
-    </div>
-    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">
-        <i class="fa fa-thumbs-up"></i>
-        Like
-    </button>
-    <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom">
-        <i class="fa fa-comment"></i>
-        Comment
-    </button>
     <app-like [post]="post"></app-like>
 </div>

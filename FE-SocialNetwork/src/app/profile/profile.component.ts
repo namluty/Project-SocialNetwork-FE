@@ -10,6 +10,9 @@ import {PostService} from '../service/post.service';
 })
 export class ProfileComponent implements OnInit {
   listPost: PostForm[] = [];
+  myMap = new Map();
+  arrImage: Array<string> = [];
+  arrIConvert: Array<string> = [];
 
   constructor(private postService: AuthService,
               private deletePostService: PostService) {
@@ -22,6 +25,11 @@ export class ProfileComponent implements OnInit {
   showPostProfile() {
     this.postService.showPostProfile().subscribe(data => {
       this.listPost = data;
+      for (let i = 0; i < data.length; i++) {
+        this.arrIConvert = [];
+        this.arrIConvert = data[i].imageUrl.split(',');
+        this.myMap.set(i, this.arrIConvert);
+      }
     });
   }
 
