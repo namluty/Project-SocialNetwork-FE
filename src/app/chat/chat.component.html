@@ -1,26 +1,17 @@
+<div>
+    <div *ngFor="let c of chats">
+        <div>
+            <p><strong>{{c.name}}</strong>: {{c.message}}</p>
+        </div>
+    </div>
+</div>
 <div style="color: blue; text-align: center">
     <h1>{{title}}</h1>
     <h3>{{description}}</h3>
 </div>
-<div>
-    <audio src="https://nhacchuong123.com/nhac-chuong/am-thanh/Nhac-chuong-tin-nhan-Messenger.mp3" controls auto>
-    </audio>
-</div>
-
 <div class="container" style="width: 400px; margin-top: 20px;">
-
-    <!--    <form class="form-inline">-->
-    <!--        <div class="form-group">-->
-    <!--            <label for="connect">Make Connection:</label>-->
-    <!--&lt;!&ndash;            <button id="connect" class="btn btn-default" type="button" [disabled]="!disabled" (click)="connect()">Connect</button>&ndash;&gt;-->
-    <!--            <button id="disconnect" class="btn btn-default" type="submit" [disabled]="disabled" (click)="disconnect()">Disconnect</button>-->
-    <!--        </div>-->
-    <!--    </form>-->
-
     <form class="form-inline" style="margin-top: 20px;">
         <div class="form-group">
-            <!--            <label for="name">User's Name:</label>-->
-            <!--            <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" />-->
             <input placeholder="nhập tin nhắn..." type="text" name="name" class="form-control" [(ngModel)]="message"
                    (keyup)="$event.keyCode ===13 && sendName()"/>
         </div>

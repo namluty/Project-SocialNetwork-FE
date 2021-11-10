@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Stomp} from '@stomp/stompjs';
 import {AuthService} from '../service/auth.service';
 import {TokenService} from '../service/token.service';
+import {Chat} from '../model/Chat';
 
 @Component({
   selector: 'app-chat',
@@ -16,12 +17,17 @@ export class ChatComponent implements OnInit {
   greetings: string[] = [];
   disabled = true;
   name = this.tokenService.getFullName();
+  count: any;
+  chats: Chat[]=[];
+
   private stompClient: any;
 
-  constructor(private tokenService: TokenService) { }
+  constructor(private tokenService: TokenService,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.connect();
+    this.showMess(this.count = window.sessionStorage.getItem('Img'));
   }
 
   setConnected(connected: boolean) {
@@ -73,4 +79,10 @@ export class ChatComponent implements OnInit {
     this.greetings.unshift(message);
   }
 
+  showMess(count: any){
+    this.authService.showMessage(count).subscribe(data => {
+      console.log(data, 'show mess');
+      this.chats = data;
+    });
+  }
 }
