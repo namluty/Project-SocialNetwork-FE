@@ -5,6 +5,7 @@ import {SignUpForm} from '../model/SignUpForm';
 import {Observable} from 'rxjs';
 import {JwtResponse} from '../model/JwtResponse';
 import {PostForm} from '../model/PostForm';
+import {Chat} from '../model/Chat';
 
 class SignInForm {
 }
@@ -22,7 +23,7 @@ export class AuthService {
   private API_CHANGE_AVATAR = environment.API_LOCAL + 'change-avatar';
   private API_CHANGE_PASSWORD = environment.API_LOCAL + 'change-password';
   private API_SHOW_POST_PROFILE = environment.API_LOCAL + 'showPostProfile';
-
+  private API_MESS = environment.API_LOCAL + 'getMess';
   data: boolean;
 
   constructor(private http: HttpClient) {
@@ -68,5 +69,8 @@ export class AuthService {
     return this.data;
   }
 
+  getMess(): Observable<Chat>{
+    return this.http.get<Chat>(this.API_MESS);
+  }
 }
 

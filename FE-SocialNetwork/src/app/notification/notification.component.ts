@@ -12,7 +12,7 @@ export class NotificationComponent implements OnInit {
   notifications: Notification[] =[];
   post: PostForm;
   checkNotify= false;
-
+  visible = false;
   constructor(private notificationService: NotificationService) { }
 
   ngOnInit(): void {
@@ -22,6 +22,7 @@ export class NotificationComponent implements OnInit {
   getNotification(){
     this.notificationService.getNotify().subscribe(data =>{
       this.notifications = data;
+
     })
   }
 
@@ -35,5 +36,13 @@ export class NotificationComponent implements OnInit {
   check1() {
     this.checkNotify=false;
     this.getNotification();
+  }
+
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
   }
 }

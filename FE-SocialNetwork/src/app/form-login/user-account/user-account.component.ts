@@ -6,6 +6,7 @@ import {AuthService} from '../../service/auth.service';
 import {FriendService} from '../../service/friend.service';
 import {User} from '../../model/User';
 import {Comments} from '../../model/comment';
+import {Chat} from '../../model/Chat';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class UserAccountComponent implements OnInit {
   arrIConvert: Array<string> = [];
   myMap = new Map();
   isSearching = false;
+  chat: Chat;
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
@@ -47,6 +49,7 @@ export class UserAccountComponent implements OnInit {
     if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(this.admin)) {
       this.isCheckAdmin = true;
     }
+    this.getMess();
   }
 
   logOut() {
@@ -54,7 +57,9 @@ export class UserAccountComponent implements OnInit {
     this.router.navigate(['login']).then(() => {
     });
   };
-
+  displayNotification(){
+    this.router.navigate(['notify']).then(() => {})
+  }
   getListPost() {
     this.postService.showListPost().subscribe(data => {
       this.listPost = data;
@@ -105,6 +110,12 @@ export class UserAccountComponent implements OnInit {
   }
   closeSearch(){
     this.isSearching = false;
+  }
 
+  getMess(){
+    this.postService.getMess().subscribe(data => {
+      console.log(data, 'get mess');
+      this.chat = data;
+    });
   }
 }

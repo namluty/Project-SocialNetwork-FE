@@ -21,14 +21,20 @@ Navbar
                 class="fa fa-home w3-margin-right"></i>Metabook</a>
         <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i
                 class="fa fa-globe"></i></a>
-        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i
-                class="fa fa-user"></i></a>
-        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
-                class="fa fa-envelope"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
-           title="Account Settings"><i class="fa fa-user"></i></a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i
-                class="fa fa-envelope"></i></a>
+        <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">
+            <mat-icon nz-icon nzType="comment" nzTheme="outline" routerLink="/chat" matBadge="{{chat.img}}" matBadgeColor="warn">forward_to_inbox</mat-icon>
+            <span class="cdk-visually-hidden"></span>
+        </a>
+
+
+        <a [matMenuTriggerFor]="menu1" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"
+           title="News"><i
+                class="fa fa-globe"></i></a>
+        <mat-menu #menu1="matMenu">
+            <button style="text-align:center" (click)="displayNotification()" mat-button></button>
+            <app-notification></app-notification>
+        </mat-menu>
+
         <div class="w3-dropdown-hover w3-hide-small">
             <form class="d-flex">
                 <input #element style="right: 15%;width: 250px; margin-top: 8px"
@@ -42,8 +48,9 @@ Navbar
                     <img [matMenuTriggerFor]="menu" src="{{avatar}}" class="w3-circle" style="height:40px;width:40px"
                          alt="Avatar">
                     <mat-menu #menu="matMenu">
-                        <button style="text-align:center" (click)="logOut()" mat-button>Log Out</button><br>
-                        <button  mat-button>...</button>
+                        <button style="text-align:center" (click)="logOut()" mat-button>Log Out</button>
+                        <br>
+                        <button mat-button>...</button>
                     </mat-menu>
                 </a>
             </form>
@@ -76,7 +83,8 @@ Navbar
                     <span style="color: cadetblue" nz-typography nzType="secondary">{{email}}</span><br><br>
                     <nz-list>
                         <span style="color: sandybrown" routerLink="/change-profile" nz-typography><I>Change Profile</I></span><br>
-                        <span style="color: cornflowerblue" routerLink="/change-avatar" nz-typography><I>Change Avatar</I></span><br>
+                        <span style="color: cornflowerblue" routerLink="/change-avatar"
+                              nz-typography><I>Change Avatar</I></span><br>
                         <span nz-typography nzType="danger" routerLink="/change-password"><I>Change Password</I></span>
                     </nz-list>
                 </div>
@@ -84,48 +92,48 @@ Navbar
             <br>
 
             <!-- Accordion -->
-<!--            <div class="w3-card w3-round">-->
-<!--                <div class="w3-white">-->
-<!--                    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
-<!--                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups-->
-<!--                    </button>-->
-<!--                    <div id="Demo1" class="w3-hide w3-container">-->
-<!--                        <p>Some text..</p>-->
-<!--                    </div>-->
-<!--                    <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
-<!--                            class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events-->
-<!--                    </button>-->
-<!--                    <div id="Demo2" class="w3-hide w3-container">-->
-<!--                        <p>Some other text..</p>-->
-<!--                    </div>-->
-<!--                    <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
-<!--                            class="fa fa-users fa-fw w3-margin-right"></i> My Photos-->
-<!--                    </button>-->
-<!--                    <div id="Demo3" class="w3-hide w3-container">-->
-<!--                        <div class="w3-row-padding">-->
-<!--                            <br>-->
-<!--                            <div class="w3-half">-->
-<!--                                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">-->
-<!--                            </div>-->
-<!--                            <div class="w3-half">-->
-<!--                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
-<!--                            </div>-->
-<!--                            <div class="w3-half">-->
-<!--                                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">-->
-<!--                            </div>-->
-<!--                            <div class="w3-half">-->
-<!--                                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">-->
-<!--                            </div>-->
-<!--                            <div class="w3-half">-->
-<!--                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
-<!--                            </div>-->
-<!--                            <div class="w3-half">-->
-<!--                                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="w3-card w3-round">-->
+            <!--                <div class="w3-white">-->
+            <!--                    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
+            <!--                            class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups-->
+            <!--                    </button>-->
+            <!--                    <div id="Demo1" class="w3-hide w3-container">-->
+            <!--                        <p>Some text..</p>-->
+            <!--                    </div>-->
+            <!--                    <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
+            <!--                            class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events-->
+            <!--                    </button>-->
+            <!--                    <div id="Demo2" class="w3-hide w3-container">-->
+            <!--                        <p>Some other text..</p>-->
+            <!--                    </div>-->
+            <!--                    <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i-->
+            <!--                            class="fa fa-users fa-fw w3-margin-right"></i> My Photos-->
+            <!--                    </button>-->
+            <!--                    <div id="Demo3" class="w3-hide w3-container">-->
+            <!--                        <div class="w3-row-padding">-->
+            <!--                            <br>-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">-->
+            <!--                            </div>-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
+            <!--                            </div>-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">-->
+            <!--                            </div>-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">-->
+            <!--                            </div>-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">-->
+            <!--                            </div>-->
+            <!--                            <div class="w3-half">-->
+            <!--                                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
 
             <!-- Block/ Unblock -->
             <div class="w3-card w3-round w3-white w3-hide-small">
@@ -157,12 +165,13 @@ Navbar
                             <form class="" #f="ngForm" (ngSubmit)="f.form.valid && ngPost()" novalidate>
                                 <!-- CONTENT -->
                                 <div>
-                                <mat-form-field style="width: 87%" appearance="outline">
-                                    <input name="content" [(ngModel)]="form.content" matInput
-                                           placeholder="How are you today?"><br>
-                                    <app-upload-avatar (giveURLtoCreate)="addImage($event)"></app-upload-avatar>
-                                </mat-form-field>
-                                    <nz-select name="status" ngModel="lucy" style="color: green" [(ngModel)]="form.status" nzAllowClear
+                                    <mat-form-field style="width: 85%" appearance="outline">
+                                        <input name="content" [(ngModel)]="form.content" matInput
+                                               placeholder="How are you today?"><br>
+                                        <app-upload-avatar (giveURLtoCreate)="addImage($event)"></app-upload-avatar>
+                                    </mat-form-field>
+                                    <nz-select name="status" ngModel="lucy" style="color: green"
+                                               [(ngModel)]="form.status" nzAllowClear
                                                nzPlaceHolder="Choose">
                                         <nz-option nzValue="public" nzLabel="Public"></nz-option>
                                         <nz-option nzValue="friend" nzLabel="Friend"></nz-option>
@@ -241,13 +250,6 @@ Navbar
 
         <!-- Right Column -->
         <div class="w3-col m2">
-            <div class="w3-card w3-round w3-white w3-center">
-                <div class="w3-container">
-                    <span nz-typography nzType="danger">Notification</span>
-                    <app-notification></app-notification>
-                </div>
-            </div>
-            <br>
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
                     <span nz-typography nzType="danger">Friends Request</span>

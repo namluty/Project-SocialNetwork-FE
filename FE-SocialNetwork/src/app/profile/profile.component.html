@@ -1,5 +1,7 @@
 <div *ngFor="let post of listPost, index as i" class="w3-container w3-card w3-white w3-round w3-margin"><br>
-    <button (click)="deletePosts(i,post.id)">Click Tao</button>
+    <a class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">
+    <mat-icon (click)="deletePosts(i,post.id)" color="accent" matSuffix>delete_outline</mat-icon>
+    </a>
     <nz-avatar class="w3-left w3-circle w3-margin-right" [nzSize]="80" nzIcon="user"
                nzSrc="{{post.user.avatarUrl}}"></nz-avatar>
     <h5 nz-typography>
@@ -23,6 +25,5 @@
         <i class="fa fa-comment"></i>
         Comment
     </button>
-<!--    <app-comment [post]="post"></app-comment>-->
     <app-like [post]="post"></app-like>
 </div>

@@ -16,12 +16,6 @@
             <input nz-input style="width: 85%" *ngIf="comments.check" type="text" [(ngModel)]="comments.content"
                    (keydown.enter)="submitComment(comments)">
         </div>
-<!--        <button mat-button [matMenuTriggerFor]="menu">Menu</button>-->
-<!--        <mat-menu #menu="matMenu">-->
-<!--            <button  mat-menu-item>Edit</button>-->
-<!--            <button mat-menu-item>Delete</button>-->
-<!--        </mat-menu>-->
-
         <button (click)="editComment(comments)">sua cmt</button>
         <button (click)="deleteComment(comments, i)">xóa comment</button>
     </div>

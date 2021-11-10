@@ -3,7 +3,6 @@ import {SignInForm} from '../../model/SignInForm';
 import {AuthService} from '../../service/auth.service';
 import {Router} from '@angular/router';
 import {TokenService} from '../../service/token.service';
-import {log} from 'ng-zorro-antd/core/logger';
 
 @Component({
   selector: 'app-login',
@@ -33,10 +32,10 @@ export class LoginComponent implements OnInit {
     this.signInForm = new SignInForm(
       this.form.username,
       this.form.password
-    )
+    );
     this.authService.signin(this.signInForm).subscribe(data => {
       if (data.message == 'user_was_blocked') {
-        alert("Account is Blocked!!!")
+        alert('Account is Blocked!!!');
       } else {
         if (data.token != undefined) {
           this.tokenService.setToken(data.token);
@@ -46,9 +45,9 @@ export class LoginComponent implements OnInit {
           this.tokenService.setPhone(data.phone);
           this.tokenService.setEmail(data.email);
           this.tokenService.setIsActive(data.isActive);
-          this.router.navigate(['user-account'])
+          this.router.navigate(['user-account']);
         }
       }
-    },error => console.log(error));
+    }, error => console.log(error));
   }
 }

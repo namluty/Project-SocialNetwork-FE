@@ -62,6 +62,11 @@ import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzToolTipModule} from 'ng-zorro-antd/tooltip';
 import {NzUploadModule} from 'ng-zorro-antd/upload';
 import {NzAutocompleteModule} from 'ng-zorro-antd/auto-complete';
+import {NzFormModule} from 'ng-zorro-antd/form';
+import {NzGridModule} from 'ng-zorro-antd/grid';
+import {NzDrawerModule} from 'ng-zorro-antd/drawer';
+import { ChatComponent } from './chat/chat.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 registerLocaleData(en);
 
@@ -69,6 +74,7 @@ export const appRoutes: Routes = [
   {path: '', component: HomeComponent, data: {title: 'Home'}},
   {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
+  {path: 'notify', component: NotificationComponent, data: {title: 'Notify'}},
   {path: 'user-account', component: UserAccountComponent},
   {path: 'upload-avatar', component: UploadFileComponent},
   {path: "change-role/:id", component: AdminManagerComponent, data: {title: 'Change-Role'}},
@@ -76,12 +82,13 @@ export const appRoutes: Routes = [
   {path: 'change-avatar', component: ChangeAvatarComponent},
   {path: 'change-password', component:ChangePasswordComponent},
   {path: 'user-profile', component:ProfileComponent},
+  {path: 'chat', component:ChatComponent},
 
 ];
 
 @NgModule({
   declarations: [CommentComponent, AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
-    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent],
+    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent, ChatComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -99,7 +106,7 @@ export const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule,
     _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule, MatListModule, NzAvatarModule, NzTypographyModule,
-    NzListModule, NzProgressModule, NzSelectModule, NzInputModule, NzButtonModule, NzToolTipModule, NzUploadModule, NzAutocompleteModule
+    NzListModule, NzProgressModule, NzSelectModule, NzInputModule, NzButtonModule, NzToolTipModule, NzUploadModule, NzAutocompleteModule, NzFormModule, NzGridModule, NzDrawerModule, MatBadgeModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]

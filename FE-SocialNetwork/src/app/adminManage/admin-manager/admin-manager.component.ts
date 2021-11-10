@@ -16,7 +16,7 @@ export class AdminManagerComponent implements OnInit {
   constructor(private adminService : AdminService) { }
 
   ngOnInit(): void {
-    this.getListRequest({page:0, size:1000})
+    this.getListRequest({page:0, size:3})
   }
 
   private getListRequest(request) {
@@ -37,12 +37,12 @@ export class AdminManagerComponent implements OnInit {
     this.getListRequest(request);
   }
 
-  blockUser(id: number){
-    this.adminService.changeRoleUser(id).subscribe(data =>{
-    })
-    this.getListRequest({page:0, size:1000});
+  blockUser(index: number){
+    const user: User = this.users[index];
+    this.adminService.changeRoleUser(user.id).subscribe(data => {
+      this.users[index].isActive = !this.users[index].isActive;
+    });
   }
-
   // deleteUser(id: number) {
   //   this.adminService.deleteUserById(id).subscribe(data =>{
   //     if(JSON.stringify(data)==JSON.stringify(this.deleteSuccess)){
