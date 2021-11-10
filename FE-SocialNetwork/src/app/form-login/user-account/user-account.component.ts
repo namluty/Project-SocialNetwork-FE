@@ -118,4 +118,9 @@ export class UserAccountComponent implements OnInit {
       this.chat = data;
     });
   }
+
+  saveImg(data?: any){
+    window.sessionStorage.setItem('Img', data);
+    this.router.navigate(['/chat']);
+  }
 }

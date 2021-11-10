@@ -24,6 +24,8 @@ export class AuthService {
   private API_CHANGE_PASSWORD = environment.API_LOCAL + 'change-password';
   private API_SHOW_POST_PROFILE = environment.API_LOCAL + 'showPostProfile';
   private API_MESS = environment.API_LOCAL + 'getMess';
+  private API_SHOW_MESSAGE = environment.API_LOCAL + 'showMess';
+
   data: boolean;
 
   constructor(private http: HttpClient) {
@@ -71,6 +73,10 @@ export class AuthService {
 
   getMess(): Observable<Chat>{
     return this.http.get<Chat>(this.API_MESS);
+  }
+
+  showMessage(count: number): Observable<Chat[]>{
+    return this.http.get<any>(this.API_SHOW_MESSAGE + '/' + count);
   }
 }
 

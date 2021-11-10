@@ -37,7 +37,6 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment.prod';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AdminManagerComponent } from './adminManage/admin-manager/admin-manager.component';
-import { PageUserComponent } from './adminManage/page-user/page-user.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SearchComponent } from './search/search.component';
 import {LoginComponent} from './form-login/login/login.component';
@@ -65,9 +64,12 @@ import {NzAutocompleteModule} from 'ng-zorro-antd/auto-complete';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {NzDrawerModule} from 'ng-zorro-antd/drawer';
+// @ts-ignore
 import { ChatComponent } from './chat/chat.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {CanActiveGuard} from './security/can-active.guard';
+import { DialogComponent } from './adminManage/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 registerLocaleData(en);
 
@@ -90,7 +92,8 @@ export const appRoutes: Routes = [
 
 @NgModule({
   declarations: [CommentComponent, AppComponent, RegisterComponent, UserAccountComponent, LoginComponent, HomeComponent, ChangeProfileComponent,
-    UploadFileComponent, AdminManagerComponent, PageUserComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent, ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent, ChatComponent],
+    UploadFileComponent, AdminManagerComponent, SearchComponent, LikeComponent, ChangeAvatarComponent, UploadAvatarComponent,
+    ChangePasswordComponent, ShowAddFriendComponent, ListFriendComponent, ProfileComponent, FriendRequestComponent, NotificationComponent, ChatComponent, DialogComponent],
   imports: [
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -108,7 +111,8 @@ export const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, {useHash: false}), FormsModule, MatFormFieldModule, ReactiveFormsModule, MatDatepickerModule,
     _MatMenuDirectivesModule, MatMenuModule, MatProgressSpinnerModule, MatPaginatorModule, MatListModule, NzAvatarModule, NzTypographyModule,
-    NzListModule, NzProgressModule, NzSelectModule, NzInputModule, NzButtonModule, NzToolTipModule, NzUploadModule, NzAutocompleteModule, NzFormModule, NzGridModule, NzDrawerModule, MatBadgeModule
+    NzListModule, NzProgressModule, NzSelectModule, NzInputModule, NzButtonModule, NzToolTipModule, NzUploadModule, NzAutocompleteModule,
+    NzFormModule, NzGridModule, NzDrawerModule, MatBadgeModule, MatDialogModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}, httpInterceptorProviders],
   bootstrap: [AppComponent]

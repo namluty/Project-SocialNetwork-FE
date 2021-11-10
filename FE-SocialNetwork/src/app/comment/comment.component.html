@@ -13,7 +13,7 @@
 <div class="column" *ngFor="let comments of post.commentList; index as i">
     <div class="card">
         <div><strong>{{comments.user.fullName}}</strong> : <span *ngIf="!comments.check">{{comments.content}}</span>
-            <input nz-input style="width: 85%" *ngIf="comments.check" type="text" [(ngModel)]="comments.content"
+            <input nz-input style="width: 100%" *ngIf="comments.check" type="text" [(ngModel)]="comments.content"
                    (keydown.enter)="submitComment(comments)">
         </div>
         <button mat-button [matMenuTriggerFor]="menu2">Menu</button>
