@@ -1,5 +1,7 @@
 export const environment = {
   API_LOCAL: 'http://localhost:8080/',
+  // API_LOCAL: 'https://git.heroku.com/meta-luon.git',
+
   production: true,
   firebaseConfig: {
     apiKey: 'AIzaSyAm4Dr_WDoOpk4Dwlx_7V0zA0TwT0d8Kxc',

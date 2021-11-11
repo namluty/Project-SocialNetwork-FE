@@ -32,7 +32,8 @@ export class UserAccountComponent implements OnInit {
   arrIConvert: Array<string> = [];
   myMap = new Map();
   isSearching = false;
-  chat: Chat;
+  chat: Chat = {name: '', message: '', img: 0};
+
   constructor(private tokenService: TokenService,
               private router: Router,
               private postService: AuthService,
@@ -46,7 +47,7 @@ export class UserAccountComponent implements OnInit {
     this.phone = this.tokenService.getPhone();
     this.email = this.tokenService.getEmail();
     this.avatar = this.tokenService.getAvatarUrl();
-    if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(this.admin)) {
+    if (JSON.stringify(this.tokenService.getRole()) === JSON.stringify(this.admin)) {
       this.isCheckAdmin = true;
     }
     this.getMess();
@@ -56,18 +57,22 @@ export class UserAccountComponent implements OnInit {
     window.sessionStorage.clear();
     this.router.navigate(['login']).then(() => {
     });
-  };
-  displayNotification(){
-    this.router.navigate(['notify']).then(() => {})
   }
+
+  displayNotification() {
+    this.router.navigate(['notify']).then(() => {
+    });
+  }
+
   getListPost() {
     this.postService.showListPost().subscribe(data => {
       this.listPost = data;
-      console.log('data --> ', data);
       for (let i = 0; i < data.length; i++) {
         this.arrIConvert = [];
-        this.arrIConvert = data[i].imageUrl.split(',');
-        this.myMap.set(i, this.arrIConvert);
+        if (data[i].imageUrl != null) {
+          this.arrIConvert = data[i].imageUrl.split(',');
+          this.myMap.set(i, this.arrIConvert);
+        }
       }
     });
   }
@@ -108,18 +113,23 @@ export class UserAccountComponent implements OnInit {
   timeLine() {
     this.check = false;
   }
-  closeSearch(){
+
+  closeSearch() {
     this.isSearching = false;
   }
 
-  getMess(){
+  getMess() {
     this.postService.getMess().subscribe(data => {
       console.log(data, 'get mess');
-      this.chat = data;
+      if (data === null) {
+        this.chat.img = 0;
+      } else {
+        this.chat = data;
+      }
     });
   }
 
-  saveImg(data?: any){
+  saveImg(data?: any) {
     window.sessionStorage.setItem('Img', data);
     this.router.navigate(['/chat']);
   }
